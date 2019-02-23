@@ -30,7 +30,10 @@ allprojects {
 }
 
 ext {
-    glide_v = '4.7.1'
+    glide_v = '4.8.0'
+    navigationVersion = '1.0.0'
+    retrofit_v = '2.5.0'
+    rxjava_v = ''
 }
 
 task clean(type: Delete) {

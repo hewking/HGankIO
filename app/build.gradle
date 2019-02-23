@@ -13,7 +13,19 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+//        multiDexEnabled true
     }
+
+//    dexOptions {
+//        incremental true
+//    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -27,9 +39,9 @@ def S_V = "27.1.0"
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.appcompat:appcompat:1.1.0-alpha02'
-    api 'com.google.android.material:material:1.1.0-alpha03'
+//    api 'com.google.android.material:material:1.1.0-alpha03'
     api 'androidx.recyclerview:recyclerview:1.1.0-alpha02'
     api 'androidx.cardview:cardview:1.0.0'
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
@@ -43,9 +55,21 @@ dependencies {
 
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.13.1'
+//    implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
+
+    // rxjava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.6"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:retrofit-converters:2.5.0'
-    implementation 'com.squareup.retrofit2:retrofit-adapters:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:' + retrofit_v
+    implementation 'com.squareup.retrofit2:retrofit-converters:' + retrofit_v
+    implementation 'com.squareup.retrofit2:retrofit-adapters:' + retrofit_v
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:' + retrofit_v
+
+
+    // Navigation
+//    implementation 'androidx.navigation:navigation-fragment:' + navigationVersion
+//    implementation 'androidx.navigation:navigation-ui:' + navigationVersion
 }
