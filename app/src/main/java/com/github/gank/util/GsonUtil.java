@@ -1,6 +1,10 @@
 package com.github.gank.util;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * @program: HGankIO
@@ -17,5 +21,10 @@ public class GsonUtil {
     public static <T> T fromJson(String json,Class<T> clazz){
         return new Gson().fromJson(json,clazz);
     }
+
+//    public static <T> T fromJson(String json) {
+//        Type type  = new TypeToken<List<T>>(){}.getType();
+//        new Gson().fromJson(json,type);
+//    }
 
 }
