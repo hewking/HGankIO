@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val vm = ViewModelProvider.NewInstanceFactory().create(GankDayViewModel::class.java)
+        vm.init()
         vm.data.observe(this, Observer<String> {
             tv_text.text = it
         })

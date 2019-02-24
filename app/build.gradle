@@ -47,15 +47,15 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     //    api 'com.google.android:flexbox:0.2.5'
     //glide
-    implementation "com.github.bumptech.glide:glide:${glide_v}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${glide_v}"
-    kapt "com.github.bumptech.glide:compiler:${glide_v}"
+//    implementation "com.github.bumptech.glide:glide:${glide_v}"
+//    annotationProcessor "com.github.bumptech.glide:compiler:${glide_v}"
+//    kapt "com.github.bumptech.glide:compiler:${glide_v}"
     implementation 'com.google.android:flexbox:1.1.0'
     testImplementation 'junit:junit:4.12'
 
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.13.1'
-//    implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
 
     // rxjava
     implementation "io.reactivex.rxjava2:rxjava:2.2.6"
@@ -64,10 +64,13 @@ dependencies {
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:' + retrofit_v
     implementation 'com.squareup.retrofit2:retrofit-converters:' + retrofit_v
-    implementation 'com.squareup.retrofit2:retrofit-adapters:' + retrofit_v
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:' + retrofit_v
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:' + retrofit_v
 
+    // Required for instrumented tests
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
     // Navigation
 //    implementation 'androidx.navigation:navigation-fragment:' + navigationVersion

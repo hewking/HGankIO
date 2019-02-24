@@ -2,6 +2,7 @@ package com.github.gank.repo
 
 import com.github.gank.model.GankDayModel
 import io.reactivex.Observable
+import okhttp3.ResponseBody
 
 /**
  * @program: HGankIO

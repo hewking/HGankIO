@@ -20,9 +20,11 @@ class GankDayViewModel : ViewModel(){
 
     fun init(){
         data = MutableLiveData<String>()
-        GankDayRepo.gankDay().subscribe {
+        GankDayRepo.gankDay().subscribe ({
             data.value = it
-        }
+        },{
+            data.value = "麻痹的 报错了"
+        })
     }
 
 
