@@ -1,6 +1,13 @@
 package com.github.gank.bean;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * 项目名称：FlowChat
@@ -12,6 +19,7 @@ import java.util.List;
  * 修改备注：
  * Version: 1.0.0
  */
+@Entity(tableName = "t_gankday")
 public class GankDayBean {
 
     /**
@@ -27,6 +35,8 @@ public class GankDayBean {
      * who : fingdo
      */
 
+    @PrimaryKey
+    @NonNull
     private String _id;
     private String createdAt;
     private String desc;
@@ -34,6 +44,7 @@ public class GankDayBean {
     private String source;
     private String type;
     private String url;
+//    @ColumnInfo(name = "")
     private boolean used;
     private String who;
     private List<String> images;

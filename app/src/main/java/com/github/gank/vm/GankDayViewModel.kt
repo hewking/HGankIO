@@ -1,5 +1,6 @@
 package com.github.gank.vm
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.gank.bean.GankDayBean
@@ -19,15 +20,10 @@ class GankDayViewModel : ViewModel(){
 
     private val compositeDisposable by lazy {CompositeDisposable()}
 
-    lateinit var data : MutableLiveData<String>
+    lateinit var data : LiveData<List<GankDayBean>>
 
     fun init(){
-        data = MutableLiveData()
-        compositeDisposable.add(GankDayRepo.gankDay().subscribe ({
-            data.value = it.toString()
-        },{
-            data.value = "麻痹的 报错了 " + it.message
-        }))
+        data = GankDayRepo.gankDay()
     }
 
     override fun onCleared() {

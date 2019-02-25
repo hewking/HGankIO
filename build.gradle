@@ -33,7 +33,8 @@ ext {
     glide_v = '4.8.0'
     navigationVersion = '1.0.0'
     retrofit_v = '2.5.0'
-    rxjava_v = ''
+    rxjava_v = '2.2.6'
+    roomVersion = '1.1.1'
 }
 
 task clean(type: Delete) {
