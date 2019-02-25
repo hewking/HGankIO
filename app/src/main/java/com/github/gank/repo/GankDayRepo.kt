@@ -1,5 +1,6 @@
 package com.github.gank.repo
 
+import com.github.gank.bean.GankDayBean
 import com.github.gank.model.GankDayModel
 import io.reactivex.Observable
 import okhttp3.ResponseBody
@@ -16,7 +17,7 @@ object GankDayRepo{
         GankDayModel()
     }
 
-    fun gankDay() : Observable<String>{
+    fun gankDay() : Observable<List<GankDayBean>>{
         return gankModel.gankToday()
     }
 

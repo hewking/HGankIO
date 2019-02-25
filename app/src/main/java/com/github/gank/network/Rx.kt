@@ -1,5 +1,6 @@
 package com.github.gank.network
 
+import com.github.gank.network.type.TypeBuilder
 import com.github.gank.util.GsonUtil
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
@@ -28,7 +29,7 @@ object Rx {
                                 val result = t.string()
                                 val jsonObject = JSONObject(result)
                                 val state = jsonObject.optBoolean("error")
-                                if (state) {
+                                if (!state) {
                                     val json = jsonObject.optString("results")
                                     val data : T = GsonUtil.fromJson(json,clazz)
                                     return data
@@ -41,7 +42,33 @@ object Rx {
 
             }
         }
+    }
 
+    fun <T> transformList(clazz: Class<T>) : ObservableTransformer<ResponseBody,List<T>>{
+        return object : ObservableTransformer<ResponseBody,List<T>>{
+            override fun apply(upstream: Observable<ResponseBody>): ObservableSource<List<T>> {
+                return upstream.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .map(object : Function<ResponseBody,List<T>>{
+                            override fun apply(t: ResponseBody): List<T> {
+                                val result = t.string()
+                                val jsonObject = JSONObject(result)
+                                val state = jsonObject.optBoolean("error")
+                                if (!state) {
+                                    val json1 = jsonObject.optJSONObject("results")
+                                    val json = json1.optString("Android")
+                                    // 是不可以这样的
+                                    val type = TypeBuilder.newInstance(List::class.java).addTypeParam(clazz).build()
+                                    return GsonUtil.fromJson(json,type)
+                                } else {
+                                    throw NetException(state)
+                                }
+                            }
+
+                        })
+            }
+
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package com.github.hgankio.home
+package com.github.gank.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

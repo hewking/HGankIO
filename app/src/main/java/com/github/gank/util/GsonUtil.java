@@ -22,9 +22,9 @@ public class GsonUtil {
         return new Gson().fromJson(json,clazz);
     }
 
-//    public static <T> T fromJson(String json) {
+    public static <T> T fromJson(String json,Type type){
 //        Type type  = new TypeToken<List<T>>(){}.getType();
-//        new Gson().fromJson(json,type);
-//    }
+        return new Gson().fromJson(json,type);
+    }
 
 }

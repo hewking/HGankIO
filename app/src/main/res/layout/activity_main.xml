@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.github.hgankio.home.MainActivity">
+    tools:context="com.github.hgankio.com.github.gank.home.MainActivity">
 
     <TextView
         android:id="@+id/tv_text"
