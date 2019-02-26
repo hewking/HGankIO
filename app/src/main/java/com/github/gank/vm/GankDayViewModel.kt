@@ -31,4 +31,12 @@ class GankDayViewModel : ViewModel(){
         compositeDisposable.clear()
     }
 
+    fun deleteData(gankDayBean: GankDayBean) {
+        GankDayRepo.deleteData(gankDayBean)
+    }
+
+    fun refresh() {
+        GankDayRepo.refresh()
+    }
+
 }

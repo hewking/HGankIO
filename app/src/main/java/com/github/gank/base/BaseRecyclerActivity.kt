@@ -55,7 +55,6 @@ abstract class BaseRecyclerActivity<T> : BaseActivity(){
 
     protected open fun refreshData(){
         refreshlayout.isRefreshing = true
-        loadData()
     }
 
     protected fun appendData(datas : List<T>){

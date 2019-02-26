@@ -5,6 +5,8 @@ import com.github.gank.bean.GankDayBean
 import com.github.gank.dao.GankDayDao
 import com.github.gank.db.GankRoomDB
 import com.github.gank.model.GankDayModel
+import io.reactivex.*
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -24,16 +26,29 @@ object GankDayRepo{
 
     fun gankDay() : LiveData<List<GankDayBean>>{
         gankDay = gankDayDao.getAll()
-        gankModel.gankToday()
-                .observeOn(Schedulers.io())
-                .subscribe({
-            gankDayDao.insertAll(it)
-        },{
 
-        })
         return gankDay
 
 
+    }
+
+    fun deleteData(gankDayBean: GankDayBean) {
+        Maybe.fromAction<Unit> {
+            gankDayDao.deleteItem(gankDayBean)
+        }.subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe {
+                }
+    }
+
+    fun refresh() {
+        gankModel.gankToday()
+                .observeOn(Schedulers.io())
+                .subscribe({
+                    gankDayDao.insertAll(it)
+                },{
+
+                })
     }
 
 }

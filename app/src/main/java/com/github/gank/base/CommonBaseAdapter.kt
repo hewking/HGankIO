@@ -51,4 +51,12 @@ abstract class CommonBaseAdapter<T> : RecyclerView.Adapter<CommonViewHolder<T>>(
 
     protected abstract fun getItemLayoutId(viewType : Int) : Int
 
+    fun deleteItem(t: T) {
+        val pos = mDatas.indexOf(t)
+        if (pos != -1) {
+            mDatas.removeAt(pos)
+            notifyItemRemoved(pos)
+        }
+    }
+
 }

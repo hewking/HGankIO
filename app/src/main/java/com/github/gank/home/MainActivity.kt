@@ -2,6 +2,7 @@ package com.github.gank.home
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,14 +22,18 @@ class MainActivity : BaseRecyclerActivity<GankDayBean>() {
         super.onCreate(savedInstanceState)
 
         vm.init()
-
-
     }
 
     override fun loadData() {
         vm.data.observe(this, Observer<List<GankDayBean>> {
             mAdapter?.appendData(it)
+            onLoadEnd()
         })
+    }
+
+    override fun refreshData() {
+        super.refreshData()
+        vm.refresh()
     }
 
     override fun buildAdapter(): CommonBaseAdapter<GankDayBean> {
@@ -39,6 +44,22 @@ class MainActivity : BaseRecyclerActivity<GankDayBean>() {
 
             override fun onBindViewHolder(holder: CommonViewHolder<GankDayBean>, position: Int) {
                 holder.v<TextView>(android.R.id.text1).text = mDatas[position].toString()
+
+                holder.itemView.setOnLongClickListener {
+                    val dialog = AlertDialog.Builder(this@MainActivity)
+                            .setMessage("是否删除当前数据")
+                            .setPositiveButton("确定") { d, v ->
+                                mAdapter?.deleteItem(mDatas[position])
+                                vm.deleteData(mDatas[position])
+                                d.dismiss()
+                            }
+                            .setNegativeButton("取消") { d, v ->
+                                d.dismiss()
+                            }
+                            .create()
+                            .show()
+                    true
+                }
             }
 
         }
