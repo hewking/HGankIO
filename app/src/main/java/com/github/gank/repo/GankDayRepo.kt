@@ -5,6 +5,7 @@ import com.github.gank.bean.GankDayBean
 import com.github.gank.dao.GankDayDao
 import com.github.gank.db.GankRoomDB
 import com.github.gank.model.GankDayModel
+import io.reactivex.schedulers.Schedulers
 
 /**
  * @program: HGankIO
@@ -23,8 +24,10 @@ object GankDayRepo{
 
     fun gankDay() : LiveData<List<GankDayBean>>{
         gankDay = gankDayDao.getAll()
-        gankModel.gankToday().subscribe({
-            gankDayDao.insertAll(it[0])
+        gankModel.gankToday()
+                .observeOn(Schedulers.io())
+                .subscribe({
+            gankDayDao.insertAll(it)
         },{
 
         })

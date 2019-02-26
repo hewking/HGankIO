@@ -1,14 +1,14 @@
 package com.github.gank.dao;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-
 import com.github.gank.bean.GankDayBean;
 
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
 /**
  * 项目名称：FlowChat
@@ -22,13 +22,14 @@ import androidx.lifecycle.LiveData;
  */
 @Dao
 public interface GankDayDao {
-    @Insert
-    void insertAll(GankDayBean bean);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<GankDayBean> bean);
 
     @Query("DELETE FROM t_gankday")
     void deleteAll();
 
-    @Query("SELECT * FROM t_gankday ORDER BY createdAt ASC")
+    @Query("SELECT * FROM t_gankday")
     LiveData<List<GankDayBean>> getAll();
 
 }

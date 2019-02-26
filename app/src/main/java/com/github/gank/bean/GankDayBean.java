@@ -1,13 +1,13 @@
 package com.github.gank.bean;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * 项目名称：FlowChat
@@ -37,6 +37,7 @@ public class GankDayBean {
 
     @PrimaryKey
     @NonNull
+    @ColumnInfo(name = "id")
     private String _id;
     private String createdAt;
     private String desc;
@@ -47,7 +48,7 @@ public class GankDayBean {
 //    @ColumnInfo(name = "")
     private boolean used;
     private String who;
-    private List<String> images;
+//    private List<String> images;
 
     public String get_id() {
         return _id;
@@ -121,13 +122,13 @@ public class GankDayBean {
         this.who = who;
     }
 
-    public List<String> getImages() {
-        return images;
-    }
+//    public List<String> getImages() {
+//        return images;
+//    }
 
-    public void setImages(List<String> images) {
-        this.images = images;
-    }
+//    public void setImages(List<String> images) {
+//        this.images = images;
+//    }
 
     @Override
     public String toString() {
@@ -141,7 +142,7 @@ public class GankDayBean {
                 ", url='" + url + '\'' +
                 ", used=" + used +
                 ", who='" + who + '\'' +
-                ", images=" + images +
+//                ", images=" + images +
                 '}';
     }
 }

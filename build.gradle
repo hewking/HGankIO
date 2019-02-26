@@ -34,7 +34,7 @@ ext {
     navigationVersion = '1.0.0'
     retrofit_v = '2.5.0'
     rxjava_v = '2.2.6'
-    roomVersion = '1.1.1'
+    roomVersion = '2.1.0-alpha04'
 }
 
 task clean(type: Delete) {
