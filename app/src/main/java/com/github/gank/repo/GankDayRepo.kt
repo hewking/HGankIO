@@ -26,10 +26,7 @@ object GankDayRepo{
 
     fun gankDay() : LiveData<List<GankDayBean>>{
         gankDay = gankDayDao.getAll()
-
         return gankDay
-
-
     }
 
     fun deleteData(gankDayBean: GankDayBean) {

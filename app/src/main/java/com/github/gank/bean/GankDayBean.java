@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -48,7 +49,8 @@ public class GankDayBean {
 //    @ColumnInfo(name = "")
     private boolean used;
     private String who;
-//    private List<String> images;
+    @Ignore
+    private List<String> images;
 
     public String get_id() {
         return _id;
@@ -122,13 +124,13 @@ public class GankDayBean {
         this.who = who;
     }
 
-//    public List<String> getImages() {
-//        return images;
-//    }
+    public List<String> getImages() {
+        return images;
+    }
 
-//    public void setImages(List<String> images) {
-//        this.images = images;
-//    }
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
 
     @Override
     public String toString() {
@@ -142,7 +144,7 @@ public class GankDayBean {
                 ", url='" + url + '\'' +
                 ", used=" + used +
                 ", who='" + who + '\'' +
-//                ", images=" + images +
+                ", images=" + images +
                 '}';
     }
 }

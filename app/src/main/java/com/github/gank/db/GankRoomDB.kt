@@ -1,8 +1,6 @@
 package com.github.gank.db
 
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.github.gank.bean.GankDayBean
 import com.github.gank.dao.GankDayDao
 import com.github.hgankio.app.GankApplication
@@ -18,6 +16,7 @@ import com.github.hgankio.app.GankApplication
  * Version: 1.0.0
  */
 @Database(entities = [GankDayBean::class],version = 1)
+@TypeConverters(GankConverter::class)
 abstract class GankRoomDB : RoomDatabase() {
 
     abstract fun gankDayDao() : GankDayDao
@@ -27,7 +26,7 @@ abstract class GankRoomDB : RoomDatabase() {
 
         fun getInstance() : GankRoomDB{
             return if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(GankApplication.getApp(),GankRoomDB::class.java,"t_gankday")
+                INSTANCE = Room.databaseBuilder(GankApplication.getApp(),GankRoomDB::class.java,"gank.db")
                         .build()
                 INSTANCE!!
             } else {

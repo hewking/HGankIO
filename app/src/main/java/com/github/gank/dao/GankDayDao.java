@@ -37,4 +37,5 @@ public interface GankDayDao {
 
     @Delete
     void deleteItem(GankDayBean item);
+
 }
