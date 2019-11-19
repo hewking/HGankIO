@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--手动初始化firebase Crashlytics sdk-->
+    <meta-data
+        android:name="firebase_crashlytics_collection_enabled"
+        android:value="false"/>
 
     <application
         android:name=".app.GankApplication"

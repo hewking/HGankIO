@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "575756722737",
+    "firebase_url": "https://hgankio.firebaseio.com",
+    "project_id": "hgankio",
+    "storage_bucket": "hgankio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575756722737:android:b89bb58b2504dc89",
+        "android_client_info": {
+          "package_name": "com.github.hgankio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575756722737-3i8ja6osfn3ef145bq3r8v722fbrsjnh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.hgankio",
+            "certificate_hash": "b7a8db69d8fc20a9749a39be8d8f6a7c4051104e"
+          }
+        },
+        {
+          "client_id": "575756722737-30f1issnu1rodeurmnkmuard9f2modgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLbcGK0o1uWuvcN_6f7xHQk2X-vruWC_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575756722737-30f1issnu1rodeurmnkmuard9f2modgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
