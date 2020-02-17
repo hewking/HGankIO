@@ -1,6 +1,7 @@
 package com.github.gank.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
