@@ -37,6 +37,7 @@ captures/
 .idea/workspace.xml
 .idea/libraries
 .idea/
+apk/
 
 # Keystore files
 *.jks
