@@ -1,4 +1,4 @@
-
+package com.hewking.gank.app;
 import android.app.Application
 
 class GankApplication : Application(){

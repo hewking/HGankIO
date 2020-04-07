@@ -1,13 +1,10 @@
-package com.github.gank.model
+package com.hewking.gank.model
 
-import com.github.gank.api.GankRetrofit
-import com.github.gank.network.Rx
-import com.github.gank.api.Api
-import com.github.gank.bean.GankDayBean
+import com.hewking.gank.api.GankRetrofit
+import com.hewking.gank.network.Rx
+import com.hewking.gank.api.Api
+import com.hewking.gank.bean.GankDayBean
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import okhttp3.ResponseBody
 
 /**
  * @program: HGankIO

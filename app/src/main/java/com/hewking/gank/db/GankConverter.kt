@@ -1,11 +1,7 @@
-package com.github.gank.db
+package com.hewking.gank.db
 
 import android.text.TextUtils
 import androidx.room.TypeConverter
-import androidx.room.util.StringUtil
-import java.util.*
-import java.util.stream.Collectors
-import kotlin.collections.ArrayList
 
 /**
  * 项目名称：FlowChat

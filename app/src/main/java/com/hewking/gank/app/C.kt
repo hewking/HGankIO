@@ -1,4 +1,4 @@
-package com.github.gank.app
+package com.hewking.gank.app
 
 /**
  * @program: HGankIO

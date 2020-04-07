@@ -1,8 +1,6 @@
-package com.github.gank.dao;
+package com.hewking.gank.dao;
 
-import com.github.gank.bean.GankDayBean;
-
-import org.jetbrains.annotations.NotNull;
+import com.hewking.gank.bean.GankDayBean;
 
 import java.util.List;
 

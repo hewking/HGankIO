@@ -1,12 +1,11 @@
-package com.github.gank.api
+package com.hewking.gank.api
 
-import com.github.gank.app.C
+import com.hewking.gank.app.C
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 /**
  * @program: HGankIO

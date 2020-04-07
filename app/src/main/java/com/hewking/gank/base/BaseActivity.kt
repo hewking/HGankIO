@@ -1,4 +1,4 @@
-package com.github.gank.base
+package com.hewking.gank.base
 
 import androidx.appcompat.app.AppCompatActivity
 

@@ -2,24 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-//apply plugin: 'io.fabric'
 
 kapt {
     generateStubs = true
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
     defaultConfig {
-        applicationId "com.github.hgankio"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        applicationId versions.applicationId
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-//        multiDexEnabled true
 
         //指定room.schemaLocation生成的文件路径
         javaCompileOptions {
@@ -48,58 +45,54 @@ android {
 
 def S_V = "27.1.0"
 
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api 'androidx.appcompat:appcompat:1.1.0-alpha02'
+    api 'androidx.appcompat:appcompat:1.2.0-beta01'
 //    api 'com.google.android.material:material:1.1.0-alpha03'
-    api 'androidx.recyclerview:recyclerview:1.1.0-alpha02'
+    api 'androidx.recyclerview:recyclerview:1.2.0-alpha02'
     api 'androidx.cardview:cardview:1.0.0'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     //    api 'com.google.android:flexbox:0.2.5'
     //glide
-//    implementation "com.github.bumptech.glide:glide:${glide_v}"
-//    annotationProcessor "com.github.bumptech.glide:compiler:${glide_v}"
-//    kapt "com.github.bumptech.glide:compiler:${glide_v}"
+    implementation "com.github.bumptech.glide:glide:${dependenciesVersions.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
     implementation 'com.google.android:flexbox:1.1.0'
-    testImplementation 'junit:junit:4.12'
 
     // okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.13.1'
+    implementation "com.squareup.okhttp3:okhttp:${dependenciesVersions.okhttp}"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
 
     // rxjava
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_v"
+    implementation "io.reactivex.rxjava2:rxjava:${dependenciesVersions.rxjava}"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:' + retrofit_v
-    implementation 'com.squareup.retrofit2:retrofit-converters:' + retrofit_v
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:' + retrofit_v
-    implementation 'com.squareup.retrofit2:converter-gson:' + retrofit_v
+    implementation "com.squareup.retrofit2:retrofit:${dependenciesVersions.retrofit}"
+    implementation "com.squareup.retrofit2:retrofit-converters:$dependenciesVersions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$dependenciesVersions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$dependenciesVersions.retrofit"
 
-    // Required for instrumented tests
-    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-
+    // dagger
     implementation 'com.google.dagger:dagger:2.15'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
     kapt 'com.google.dagger:dagger-compiler:2.15'
 
     // Room components
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
-    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$dependenciesVersions.room"
+    annotationProcessor "androidx.room:room-compiler:$dependenciesVersions.room"
+    implementation "androidx.room:room-runtime:$dependenciesVersions.room"
 
     // Navigation
-//    implementation 'androidx.navigation:navigation-fragment:' + navigationVersion
-//    implementation 'androidx.navigation:navigation-ui:' + navigationVersion
-//    implementation 'com.google.firebase:firebase-messaging:20.0.1'
-//
-//    implementation 'com.google.firebase:firebase-core:17.2.1'
-//    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
-//    implementation 'com.google.firebase:firebase-analytics:17.2.0'
-}
+//    implementation "androidx.navigation:navigation-fragment:$dependenciesVersions.navigation"
+//    implementation "androidx.navigation:navigation-ui:$dependenciesVersions.navigation"
 
-//apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin
+    // SwipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    // Required for instrumented tests
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    testImplementation 'junit:junit:4.12'
+}

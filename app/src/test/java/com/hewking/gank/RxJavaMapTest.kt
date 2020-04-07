@@ -1,4 +1,4 @@
-package com.github.gank
+package com.hewking.gank
 
 import io.reactivex.Observable
 import org.junit.Test

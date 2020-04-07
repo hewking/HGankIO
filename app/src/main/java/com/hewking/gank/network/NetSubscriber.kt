@@ -1,9 +1,7 @@
-package com.github.gank.network
+package com.hewking.gank.network
 
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
 
 /**
  * @program: HGankIO

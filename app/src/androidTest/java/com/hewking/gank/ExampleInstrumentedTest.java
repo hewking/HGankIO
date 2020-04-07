@@ -1,4 +1,4 @@
-package com.github.hgankio;
+package com.hewking.hgankio;
 
 import android.content.Context;
 

@@ -1,9 +1,9 @@
-package com.github.gank.db
+package com.hewking.gank.db
 
 import androidx.room.*
-import com.github.gank.bean.GankDayBean
-import com.github.gank.dao.GankDayDao
-import com.github.hgankio.app.GankApplication
+import com.hewking.gank.app.GankApplication
+import com.hewking.gank.bean.GankDayBean
+import com.hewking.gank.dao.GankDayDao
 
 /**
  * 项目名称：FlowChat

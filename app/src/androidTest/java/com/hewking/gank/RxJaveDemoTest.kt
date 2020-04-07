@@ -1,4 +1,4 @@
-package com.github.gank
+package com.hewking.gank
 
 /**
  * 项目名称：FlowChat

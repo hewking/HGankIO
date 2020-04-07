@@ -1,4 +1,4 @@
-package com.github.gank.base
+package com.hewking.gank.base
 
 import android.view.View
 import androidx.annotation.IdRes

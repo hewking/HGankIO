@@ -1,15 +1,9 @@
-package com.github.gank.base
+package com.hewking.gank.base
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.github.gank.bean.GankDayBean
-import com.github.hgankio.R
+import com.hewking.gank.R
 import kotlinx.android.synthetic.main.base_recycler_activity.*
 
 /**

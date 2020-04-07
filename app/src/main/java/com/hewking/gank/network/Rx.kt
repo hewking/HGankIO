@@ -1,7 +1,7 @@
-package com.github.gank.network
+package com.hewking.gank.network
 
-import com.github.gank.network.type.TypeBuilder
-import com.github.gank.util.GsonUtil
+import com.hewking.gank.network.type.TypeBuilder
+import com.hewking.gank.util.GsonUtil
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
