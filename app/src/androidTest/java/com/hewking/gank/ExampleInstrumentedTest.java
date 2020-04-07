@@ -1,4 +1,4 @@
-package com.hewking.hgankio;
+package com.hewking.gank;
 
 import android.content.Context;
 
