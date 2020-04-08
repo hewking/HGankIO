@@ -1,4 +1,4 @@
-package com.hewking.gank.network
+package com.hewking.gank.api.network
 
 import java.lang.Exception
 

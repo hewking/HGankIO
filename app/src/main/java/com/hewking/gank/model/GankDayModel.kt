@@ -1,7 +1,7 @@
 package com.hewking.gank.model
 
 import com.hewking.gank.api.GankRetrofit
-import com.hewking.gank.network.Rx
+import com.hewking.gank.api.network.Rx
 import com.hewking.gank.api.Api
 import com.hewking.gank.bean.GankDayBean
 import io.reactivex.Observable

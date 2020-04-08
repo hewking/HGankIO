@@ -1,9 +1,9 @@
-package com.hewking.gank.db
+package com.hewking.gank.dao.db
 
 import androidx.room.*
 import com.hewking.gank.app.GankApplication
 import com.hewking.gank.bean.GankDayBean
-import com.hewking.gank.dao.GankDayDao
+import com.hewking.gank.dao.tables.GankDayDao
 
 /**
  * 项目名称：FlowChat
@@ -15,18 +15,21 @@ import com.hewking.gank.dao.GankDayDao
  * 修改备注：
  * Version: 1.0.0
  */
-@Database(entities = [GankDayBean::class],version = 1)
+@Database(entities = [GankDayBean::class], version = 1)
 @TypeConverters(GankConverter::class)
 abstract class GankRoomDB : RoomDatabase() {
 
-    abstract fun gankDayDao() : GankDayDao
+    abstract fun gankDayDao(): GankDayDao
 
     companion object {
-        private var INSTANCE : GankRoomDB? = null
 
-        fun getInstance() : GankRoomDB{
+        private const val DATABASE_NAME = "gank.db"
+
+        private var INSTANCE: GankRoomDB? = null
+
+        fun getInstance(): GankRoomDB {
             return if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(GankApplication.getApp(),GankRoomDB::class.java,"gank.db")
+                INSTANCE = Room.databaseBuilder(GankApplication.getApp(), GankRoomDB::class.java, DATABASE_NAME)
                         .build()
                 INSTANCE!!
             } else {

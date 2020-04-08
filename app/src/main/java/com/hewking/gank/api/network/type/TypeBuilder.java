@@ -1,4 +1,4 @@
-package com.hewking.gank.network.type;
+package com.hewking.gank.api.network.type;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

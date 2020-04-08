@@ -1,4 +1,4 @@
-package com.hewking.gank.home
+package com.hewking.gank.ui.home
 
 import android.os.Bundle
 import android.widget.TextView
@@ -9,8 +9,7 @@ import com.hewking.gank.base.BaseRecyclerActivity
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
 import com.hewking.gank.bean.GankDayBean
-import com.hewking.gank.vm.GankDayViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import com.hewking.gank.ui.vm.GankDayViewModel
 
 class MainActivity : BaseRecyclerActivity<GankDayBean>() {
 

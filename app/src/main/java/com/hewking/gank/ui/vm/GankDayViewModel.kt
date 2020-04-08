@@ -1,4 +1,4 @@
-package com.hewking.gank.vm
+package com.hewking.gank.ui.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

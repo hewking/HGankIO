@@ -1,4 +1,4 @@
-package com.hewking.gank.dao;
+package com.hewking.gank.dao.tables;
 
 import com.hewking.gank.bean.GankDayBean;
 

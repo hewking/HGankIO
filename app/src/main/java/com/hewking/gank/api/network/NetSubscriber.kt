@@ -1,4 +1,4 @@
-package com.hewking.gank.network
+package com.hewking.gank.api.network
 
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
