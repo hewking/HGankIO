@@ -7,8 +7,8 @@ import retrofit2.http.GET
 interface Api {
 
 
-    @GET("/api/today")
-    fun todayGan() : Observable<ResponseBody>
+    @GET("/api/v2/data/category/Girl/type/Girl/page/1/count/10")
+    fun girls() : Observable<ResponseBody>
 
 
 }

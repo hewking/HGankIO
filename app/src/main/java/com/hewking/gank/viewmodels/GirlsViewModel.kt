@@ -2,8 +2,9 @@ package com.hewking.gank.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.hewking.gank.data.bean.GankDayBean
-import com.hewking.gank.data.repo.GankDayRepo
+import com.hewking.gank.app.GankApplication
+import com.hewking.gank.data.entity.GirlEntity
+import com.hewking.gank.data.repo.GirlsRepo
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -15,14 +16,17 @@ import io.reactivex.disposables.CompositeDisposable
  *
  * @create: 2019-02-23 14:42
  **/
-class GankDayViewModel : ViewModel(){
+class GirlsViewModel : ViewModel(){
 
     private val compositeDisposable by lazy {CompositeDisposable()}
 
-    lateinit var data : LiveData<List<GankDayBean>>
+    lateinit var data : LiveData<List<GirlEntity>>
+
+    lateinit var girlsRepo: GirlsRepo
 
     fun init(){
-        data = GankDayRepo.gankDay()
+        girlsRepo = GirlsRepo(GankApplication.getApp())
+        data = girlsRepo.getGirls()
     }
 
     override fun onCleared() {
@@ -30,12 +34,12 @@ class GankDayViewModel : ViewModel(){
         compositeDisposable.clear()
     }
 
-    fun deleteData(gankDayBean: GankDayBean) {
-        GankDayRepo.deleteData(gankDayBean)
+    fun deleteData(gankDayBean: GirlEntity) {
+//        GirlsRepo.deleteData(gankDayBean)
     }
 
     fun refresh() {
-        GankDayRepo.refresh()
+        girlsRepo.refresh()
     }
 
 }

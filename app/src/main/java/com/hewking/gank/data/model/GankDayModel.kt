@@ -3,7 +3,6 @@ package com.hewking.gank.data.model
 import com.hewking.gank.api.GankRetrofit
 import com.hewking.gank.api.network.Rx
 import com.hewking.gank.api.Api
-import com.hewking.gank.data.bean.GankDayBean
 import io.reactivex.Observable
 
 /**
@@ -14,10 +13,10 @@ import io.reactivex.Observable
  **/
 class GankDayModel {
 
-    fun gankToday() : Observable<List<GankDayBean>>{
-        return GankRetrofit.create(Api::class.java)
-                .todayGan()
-                .compose(Rx.transformList(GankDayBean::class.java))
-    }
+//    fun gankToday() : Observable<List<GankDayEntity>>{
+//        return GankRetrofit.create(Api::class.java)
+//                .todayGan()
+//                .compose(Rx.transformList(GankDayEntity::class.java))
+//    }
 
 }

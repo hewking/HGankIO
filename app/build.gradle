@@ -43,8 +43,6 @@ android {
     }
 }
 
-def S_V = "27.1.0"
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

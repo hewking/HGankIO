@@ -8,12 +8,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.hewking.gank.base.BaseRecyclerActivity
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
-import com.hewking.gank.data.bean.GankDayBean
-import com.hewking.gank.viewmodels.GankDayViewModel
+import com.hewking.gank.data.entity.GirlEntity
+import com.hewking.gank.viewmodels.GirlsViewModel
 
-class MainActivity : BaseRecyclerActivity<GankDayBean>() {
+class MainActivity : BaseRecyclerActivity<GirlEntity>() {
 
-    private val vm = ViewModelProvider.NewInstanceFactory().create(GankDayViewModel::class.java)
+    private val vm = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class MainActivity : BaseRecyclerActivity<GankDayBean>() {
     }
 
     override fun loadData() {
-        vm.data.observe(this, Observer<List<GankDayBean>> {
+        vm.data.observe(this, Observer<List<GirlEntity>> {
             mAdapter?.appendData(it)
             onLoadEnd()
         })
@@ -32,14 +32,14 @@ class MainActivity : BaseRecyclerActivity<GankDayBean>() {
         vm.refresh()
     }
 
-    override fun buildAdapter(): CommonBaseAdapter<GankDayBean> {
-        return object : CommonBaseAdapter<GankDayBean>(){
+    override fun buildAdapter(): CommonBaseAdapter<GirlEntity> {
+        return object : CommonBaseAdapter<GirlEntity>(){
             override fun getItemLayoutId(viewType: Int): Int {
                 return android.R.layout.simple_list_item_1
             }
 
-            override fun onBindViewHolder(holder: CommonViewHolder<GankDayBean>, position: Int) {
-                holder.v<TextView>(android.R.id.text1).text = mDatas[position].toString()
+            override fun onBindViewHolder(holder: CommonViewHolder<GirlEntity>, position: Int) {
+                holder.v<TextView>(android.R.id.text1).text = mDatas[position].author
 
                 holder.itemView.setOnLongClickListener {
                     val dialog = AlertDialog.Builder(this@MainActivity)

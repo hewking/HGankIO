@@ -24,7 +24,7 @@ object GankRetrofit {
                 .build()
 
         retrofit = Retrofit.Builder()
-                .baseUrl(C.BASEURL)
+                .baseUrl(BASEURL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)

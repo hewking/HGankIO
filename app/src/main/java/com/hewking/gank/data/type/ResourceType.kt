@@ -1,4 +1,4 @@
-package com.hewking.gank.data.bean
+package com.hewking.gank.data.type
 
 /**
  * 项目名称：FlowChat
