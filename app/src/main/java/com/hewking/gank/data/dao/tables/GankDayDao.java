@@ -1,6 +1,6 @@
-package com.hewking.gank.dao.tables;
+package com.hewking.gank.data.dao.tables;
 
-import com.hewking.gank.bean.GankDayBean;
+import com.hewking.gank.data.bean.GankDayBean;
 
 import java.util.List;
 

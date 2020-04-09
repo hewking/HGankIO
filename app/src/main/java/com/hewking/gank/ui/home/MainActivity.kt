@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.hewking.gank.base.BaseRecyclerActivity
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
-import com.hewking.gank.bean.GankDayBean
-import com.hewking.gank.ui.vm.GankDayViewModel
+import com.hewking.gank.data.bean.GankDayBean
+import com.hewking.gank.viewmodels.GankDayViewModel
 
 class MainActivity : BaseRecyclerActivity<GankDayBean>() {
 

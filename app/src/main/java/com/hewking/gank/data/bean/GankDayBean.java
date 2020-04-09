@@ -1,4 +1,4 @@
-package com.hewking.gank.bean;
+package com.hewking.gank.data.bean;
 
 
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.hewking.gank.ui.vm
+package com.hewking.gank.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.hewking.gank.bean.GankDayBean
-import com.hewking.gank.repo.GankDayRepo
+import com.hewking.gank.data.bean.GankDayBean
+import com.hewking.gank.data.repo.GankDayRepo
 import io.reactivex.disposables.CompositeDisposable
 
 /**

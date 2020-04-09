@@ -1,4 +1,4 @@
-package com.hewking.gank.dao.db
+package com.hewking.gank.data.dao.db
 
 import android.text.TextUtils
 import androidx.room.TypeConverter

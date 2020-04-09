@@ -1,10 +1,10 @@
-package com.hewking.gank.repo
+package com.hewking.gank.data.repo
 
 import androidx.lifecycle.LiveData
-import com.hewking.gank.bean.GankDayBean
-import com.hewking.gank.dao.tables.GankDayDao
-import com.hewking.gank.dao.db.GankRoomDB
-import com.hewking.gank.model.GankDayModel
+import com.hewking.gank.data.bean.GankDayBean
+import com.hewking.gank.data.dao.tables.GankDayDao
+import com.hewking.gank.data.dao.db.GankRoomDB
+import com.hewking.gank.data.model.GankDayModel
 import io.reactivex.*
 import io.reactivex.schedulers.Schedulers
 
