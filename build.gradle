@@ -31,21 +31,14 @@ allprojects {
     }
 }
 
-ext {
-    glide_v = '4.8.0'
-    navigationVersion = '1.0.0'
-    retrofit_v = '2.5.0'
-    rxjava_v = '2.2.6'
-    roomVersion = '2.2.5'
-}
-
 ext.dependenciesVersions = [
-        'glide'     : '4.8.0',
+        'glide'     : '4.11.0',
         'navigation': '1.0.0',
         'okhttp'    : '4.4.0',
-        'retrofit'  : '2.5.0',
+        'retrofit'  : '2.8.1',
         'rxjava'    : '2.2.6',
-        'room'      : '2.2.5'
+        'room'      : '2.2.5',
+        'timber'    : '4.7.1',
 ]
 
 ext.versions = [
@@ -53,7 +46,7 @@ ext.versions = [
         'compileSdkVersion': 29,
         'buildToolsVersion': '29.0.3',
         'targetSdkVersion' : 29,
-        'minSdkVersion'   : 21,
+        'minSdkVersion'    : 21,
         'versionCode'      : 1,
         'versionName'      : '0.0.1'
 ]

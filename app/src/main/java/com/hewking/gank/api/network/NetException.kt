@@ -8,7 +8,7 @@ import java.lang.Exception
  * @create: 2019-02-23 18:23
  * @description: ${description}
  **/
-class NetException(val state : Boolean) : Exception(){
+class NetException(val status : Int) : Exception(){
 
 
 

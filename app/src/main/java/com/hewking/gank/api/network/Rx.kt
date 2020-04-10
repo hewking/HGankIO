@@ -1,5 +1,6 @@
 package com.hewking.gank.api.network
 
+import com.hewking.gank.api.StatusCode
 import com.hewking.gank.api.network.type.TypeBuilder
 import com.hewking.gank.util.GsonUtil
 import io.reactivex.Observable
@@ -28,13 +29,12 @@ object Rx {
                             override fun apply(t: ResponseBody): T {
                                 val result = t.string()
                                 val jsonObject = JSONObject(result)
-                                val state = jsonObject.optBoolean("error")
-                                if (!state) {
-                                    val json = jsonObject.optString("results")
-                                    val data : T = GsonUtil.fromJson(json,clazz)
-                                    return data
+                                val status = jsonObject.optInt("status")
+                                if (status == StatusCode.success) {
+                                    val dataJson = jsonObject.optString("data")
+                                    return GsonUtil.fromJson(dataJson,clazz)
                                 } else {
-                                    throw NetException(state)
+                                    throw NetException(status)
                                 }
                             }
                         })
@@ -53,15 +53,14 @@ object Rx {
                             override fun apply(t: ResponseBody): List<T> {
                                 val result = t.string()
                                 val jsonObject = JSONObject(result)
-                                val state = jsonObject.optBoolean("error")
-                                if (!state) {
-                                    val json1 = jsonObject.optJSONObject("results")
-                                    val json = json1.optString("Android")
+                                val status = jsonObject.optInt("status")
+                                if (StatusCode.success == status) {
+                                    val dataJson = jsonObject.optString("data")
                                     // 是不可以这样的
                                     val type = TypeBuilder.newInstance(List::class.java).addTypeParam(clazz).build()
-                                    return GsonUtil.fromJson(json,type)
+                                    return GsonUtil.fromJson(dataJson,type)
                                 } else {
-                                    throw NetException(state)
+                                    throw NetException(status)
                                 }
                             }
 

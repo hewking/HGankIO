@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/HGankIO.iml" filepath="$PROJECT_DIR$/HGankIO.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/HGankIO-app.iml" filepath="$PROJECT_DIR$/app/HGankIO-app.iml" group="HGankIO/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/git_repo-HGankIO.iml" filepath="$PROJECT_DIR$/git_repo-HGankIO.iml" group="HGankIO" />
+      <module fileurl="file://$PROJECT_DIR$/app/git_repo-HGankIO-app.iml" filepath="$PROJECT_DIR$/app/git_repo-HGankIO-app.iml" group="HGankIO/app" />
       <module fileurl="file://$PROJECT_DIR$/private_project-HGankIO.iml" filepath="$PROJECT_DIR$/private_project-HGankIO.iml" group="HGankIO" />
     </modules>
   </component>
