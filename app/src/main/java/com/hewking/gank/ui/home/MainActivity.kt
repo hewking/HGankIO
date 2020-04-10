@@ -13,15 +13,15 @@ import com.hewking.gank.viewmodels.GirlsViewModel
 
 class MainActivity : BaseRecyclerActivity<GirlEntity>() {
 
-    private val vm = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm.init()
+        viewModel.init()
     }
 
     override fun loadData() {
-        vm.data.observe(this, Observer<List<GirlEntity>> {
+        viewModel.data.observe(this, Observer<List<GirlEntity>> {
             mAdapter?.appendData(it)
             onLoadEnd()
         })
@@ -29,7 +29,7 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
 
     override fun refreshData() {
         super.refreshData()
-        vm.refresh()
+        viewModel.refresh()
     }
 
     override fun buildAdapter(): CommonBaseAdapter<GirlEntity> {
@@ -46,7 +46,7 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
                             .setMessage("是否删除当前数据")
                             .setPositiveButton("确定") { d, v ->
                                 mAdapter?.deleteItem(mDatas[position])
-                                vm.deleteData(mDatas[position])
+                                viewModel.deleteData(mDatas[position])
                                 d.dismiss()
                             }
                             .setNegativeButton("取消") { d, v ->

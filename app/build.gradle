@@ -67,13 +67,18 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api 'androidx.appcompat:appcompat:1.2.0-beta01'
-//    api 'com.google.android.material:material:1.1.0-alpha03'
-    api 'androidx.recyclerview:recyclerview:1.2.0-alpha02'
-    api 'androidx.cardview:cardview:1.0.0'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
-    //    api 'com.google.android:flexbox:0.2.5'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha02'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    implementation "androidx.core:core-ktx:$dependenciesVersions.core_ktx"
+
+    // Java language implementation
+    implementation "androidx.activity:activity:$dependenciesVersions.activity_version"
+    // Kotlin
+    implementation "androidx.activity:activity-ktx:$dependenciesVersions.activity_version"
+
     //glide
     implementation "com.github.bumptech.glide:glide:${dependenciesVersions.glide}"
     annotationProcessor "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
