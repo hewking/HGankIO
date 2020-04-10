@@ -2,6 +2,7 @@ package com.hewking.gank.ui.home
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -10,10 +11,15 @@ import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.viewmodels.GirlsViewModel
+import com.hewking.gank.viewmodels.GirlsViewModelFactory
 
 class MainActivity : BaseRecyclerActivity<GirlEntity>() {
 
-    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+//    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+
+    private val viewModel  by viewModels<GirlsViewModel> {
+        GirlsViewModelFactory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

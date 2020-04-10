@@ -2,6 +2,7 @@ package com.hewking.gank.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.hewking.gank.app.GankApplication
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.data.repo.GirlsRepo
@@ -42,4 +43,11 @@ class GirlsViewModel : ViewModel(){
         girlsRepo.refresh()
     }
 
+}
+
+object GirlsViewModelFactory : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return GirlsViewModel() as T
+    }
 }

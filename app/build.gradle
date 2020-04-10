@@ -39,6 +39,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     lintOptions {
         // Turns off checks for the issue IDs you specify.
         disable 'TypographyFractions','TypographyQuotes'
