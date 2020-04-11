@@ -36,14 +36,13 @@ class GirlsRepo(private val context: Context) {
     }
 
     fun refresh() {
-        girlsModel.getGirls()
+        disposable.add(girlsModel.getGirls()
                 .observeOn(Schedulers.io())
                 .subscribe({
-                    Log.e("GankRepo", it.toString())
                     girlDao.insertAll(it)
                 }, {
                     it.printStackTrace()
-                })
+                }))
     }
 
 }
