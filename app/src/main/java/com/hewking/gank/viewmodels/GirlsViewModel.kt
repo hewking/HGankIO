@@ -7,6 +7,8 @@ import com.hewking.gank.app.GankApplication
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.data.repo.GirlsRepo
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * @program: HGankIO
@@ -36,7 +38,9 @@ class GirlsViewModel : ViewModel(){
     }
 
     fun deleteData(gankDayBean: GirlEntity) {
-//        GirlsRepo.deleteData(gankDayBean)
+        GlobalScope.launch {
+            girlsRepo.deleteFromCache(gankDayBean)
+        }
     }
 
     fun refresh() {

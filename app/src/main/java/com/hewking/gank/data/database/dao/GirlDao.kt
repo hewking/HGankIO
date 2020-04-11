@@ -1,10 +1,7 @@
 package com.hewking.gank.data.database.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.hewking.gank.data.entity.GirlEntity
 
 @Dao
@@ -15,5 +12,8 @@ interface GirlDao {
 
     @Query("SELECT * from t_girl")
     fun getAllGirls(): LiveData<List<GirlEntity>>
+
+    @Delete
+    fun delete(girl: GirlEntity)
 
 }

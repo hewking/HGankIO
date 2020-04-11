@@ -45,14 +45,15 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
             }
 
             override fun onBindViewHolder(holder: CommonViewHolder<GirlEntity>, position: Int) {
-                holder.v<TextView>(android.R.id.text1).text = mDatas[position].author
+                holder.v<TextView>(android.R.id.text1).text = mDatas[position].desc
 
                 holder.itemView.setOnLongClickListener {
                     val dialog = AlertDialog.Builder(this@MainActivity)
                             .setMessage("是否删除当前数据")
                             .setPositiveButton("确定") { d, v ->
-                                mAdapter?.deleteItem(mDatas[position])
-                                viewModel.deleteData(mDatas[position])
+                                val data = mDatas[position]
+                                mAdapter?.deleteItem(data)
+                                viewModel.deleteData(data)
                                 d.dismiss()
                             }
                             .setNegativeButton("取消") { d, v ->

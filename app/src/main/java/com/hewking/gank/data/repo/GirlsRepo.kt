@@ -16,28 +16,32 @@ import io.reactivex.schedulers.Schedulers
  * @author: hewking
  * @create: 2019-02-23 17:31
  **/
-class GirlsRepo(private val context: Context){
+class GirlsRepo(private val context: Context) {
 
-    private lateinit var girls : LiveData<List<GirlEntity>>
-    private val girlDao : GirlDao = AppDatabase.getInstance(context).getGirlDao()
+    private lateinit var girls: LiveData<List<GirlEntity>>
+    private val girlDao: GirlDao = AppDatabase.getInstance(context).getGirlDao()
     private val disposable = CompositeDisposable()
 
     private val girlsModel by lazy {
         GirlsModel()
     }
 
-    fun getGirls() : LiveData<List<GirlEntity>>{
+    fun getGirls(): LiveData<List<GirlEntity>> {
         girls = girlDao.getAllGirls()
         return girls
+    }
+
+    fun deleteFromCache(girl: GirlEntity) {
+        girlDao.delete(girl)
     }
 
     fun refresh() {
         girlsModel.getGirls()
                 .observeOn(Schedulers.io())
                 .subscribe({
-                    Log.e("GankRepo",it.toString())
+                    Log.e("GankRepo", it.toString())
                     girlDao.insertAll(it)
-                },{
+                }, {
                     it.printStackTrace()
                 })
     }
