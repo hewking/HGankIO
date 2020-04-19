@@ -44,7 +44,7 @@ class GirlsViewModel : ViewModel(){
     }
 
     fun refresh() {
-        girlsRepo.refresh()
+//        girlsRepo.refresh()
     }
 
 }

@@ -28,6 +28,7 @@ class GirlsRepo(private val context: Context) {
 
     fun getGirls(): LiveData<List<GirlEntity>> {
         girls = girlDao.getAllGirls()
+        refresh()
         return girls
     }
 

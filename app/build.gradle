@@ -107,9 +107,9 @@ dependencies {
     implementation "com.jakewharton.timber:timber:${dependenciesVersions.timber}"
 
     // dagger
-    implementation 'com.google.dagger:dagger:2.15'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
-    kapt 'com.google.dagger:dagger-compiler:2.15'
+    implementation "com.google.dagger:dagger:${dependenciesVersions.dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dependenciesVersions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${dependenciesVersions.dagger}"
 
     // Room components
     kapt "androidx.room:room-compiler:$dependenciesVersions.room"
