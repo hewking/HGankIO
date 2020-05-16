@@ -1,6 +1,7 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -15,6 +16,8 @@ import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.util.ex.load
 import com.hewking.gank.viewmodels.GirlsViewModel
 import com.hewking.gank.viewmodels.GirlsViewModelFactory
+import com.hewking.gank.widget.MultiImageLayout
+import kotlin.random.Random
 
 class MainActivity : BaseRecyclerActivity<GirlEntity>() {
 
@@ -53,7 +56,25 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
                 holder.v<TextView>(R.id.tv_category).text = "分类: ${girlEntity.category}"
                 holder.v<TextView>(R.id.tv_desc).text = "描述: ${girlEntity.desc}"
                 holder.v<TextView>(R.id.tv_time).text = "时间: ${girlEntity.createdAt}"
-                holder.v<ImageView>(R.id.iv_girl).load(girlEntity.images[0])
+//                holder.v<ImageView>(R.id.iv_girl).load(girlEntity.images[0])
+                val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
+                multiImageLayout.adapter = object : MultiImageLayout.Adapter {
+                    override fun displayImage(image: ImageView,icon:String) {
+                        image.load(icon)
+                        Log.d("displayImage",icon)
+                    }
+                }
+
+                val imageCount = Random.nextInt(0,9)
+                val imagesUrls = with(imageCount) {
+                    val res = mutableListOf<String>()
+                    for (i in 0 until imageCount) {
+                       res.add(girlEntity.images[0])
+                    }
+                    res
+                }
+
+                multiImageLayout.imageUrls = imagesUrls
 
                 holder.itemView.setOnLongClickListener {
                     val dialog = AlertDialog.Builder(this@MainActivity)

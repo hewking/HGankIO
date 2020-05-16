@@ -76,7 +76,12 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha02'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    // SwipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation 'com.google.android:flexbox:1.1.0'
     implementation "androidx.core:core-ktx:$dependenciesVersions.core_ktx"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
 
     // Java language implementation
     implementation "androidx.activity:activity:$dependenciesVersions.activity_version"
@@ -87,7 +92,6 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:${dependenciesVersions.glide}"
     annotationProcessor "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
     kapt "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
-    implementation 'com.google.android:flexbox:1.1.0'
 
     // okhttp
     implementation "com.squareup.okhttp3:okhttp:${dependenciesVersions.okhttp}"
@@ -120,8 +124,7 @@ dependencies {
 //    implementation "androidx.navigation:navigation-fragment:$dependenciesVersions.navigation"
 //    implementation "androidx.navigation:navigation-ui:$dependenciesVersions.navigation"
 
-    // SwipeRefreshLayout
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 
     // Required for instrumented tests
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
