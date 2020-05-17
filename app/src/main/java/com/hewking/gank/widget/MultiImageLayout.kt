@@ -10,31 +10,30 @@ import com.hewking.gank.R
 import kotlin.math.ceil
 import kotlin.math.floor
 
-class MultiImageLayout(val ctx: Context,attrs: AttributeSet) : ViewGroup(ctx,attrs){
+class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, attrs) {
 
     private var dividerPadding: Float
-    public var imageUrls: MutableList<String>? = null
-    set(value) {
-        field = value
-        initAllImageView()
-    }
+    var imageUrls: MutableList<String>? = null
+        set(value) {
+            field = value
+            initAllImageView()
+        }
 
-    public var adapter: Adapter? = null
-    set(value) {
-        field = value
-        requestLayout()
-    }
+    var adapter: Adapter? = null
+        set(value) {
+            field = value
+            requestLayout()
+        }
 
     init {
         val styledAttrs = ctx.obtainStyledAttributes(attrs, R.styleable.MultiImageLayout)
-        dividerPadding = styledAttrs.getDimension(R.styleable.MultiImageLayout_dividerPadding,3f)
+        dividerPadding = styledAttrs.getDimension(R.styleable.MultiImageLayout_dividerPadding, 3f)
         styledAttrs.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val wMode = MeasureSpec.getMode(widthMeasureSpec)
-        var wSize = MeasureSpec.getSize(widthMeasureSpec)
-        val hMode = MeasureSpec.getMode(heightMeasureSpec)
+        val wSize = MeasureSpec.getSize(widthMeasureSpec)
         var hSize = MeasureSpec.getSize(heightMeasureSpec)
         val imageCount = childCount
         val rows = when (imageCount) {
@@ -45,21 +44,22 @@ class MultiImageLayout(val ctx: Context,attrs: AttributeSet) : ViewGroup(ctx,att
         }
         if (wMode == MeasureSpec.EXACTLY && childCount > 0) {
             if (imageCount > 0) {
-                if (imageCount > 1) {
+                hSize = if (imageCount > 1) {
                     val imageWidth = (wSize - 2 * dividerPadding).div(3).toInt()
                     children.forEach {
-                        val imageSpec = MeasureSpec.makeMeasureSpec(imageWidth,MeasureSpec.EXACTLY)
-                        it.measure(imageSpec,imageSpec)
+                        val imageSpec = MeasureSpec.makeMeasureSpec(imageWidth, MeasureSpec.EXACTLY)
+                        it.measure(imageSpec, imageSpec)
                     }
-                    hSize = ceil(imageCount.div(rows.toDouble())).toInt() * imageWidth
+                    ceil(imageCount.div(rows.toDouble())).toInt() * imageWidth
                 } else {
-                    getChildAt(0).measure(widthMeasureSpec,heightMeasureSpec)
-                    hSize = wSize
+                    getChildAt(0).measure(MeasureSpec.makeMeasureSpec(wSize,MeasureSpec.AT_MOST)
+                            , MeasureSpec.makeMeasureSpec(wSize,MeasureSpec.AT_MOST))
+                    wSize
                 }
             }
         }
 
-        setMeasuredDimension(wSize,hSize)
+        setMeasuredDimension(wSize, hSize)
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
@@ -82,18 +82,20 @@ class MultiImageLayout(val ctx: Context,attrs: AttributeSet) : ViewGroup(ctx,att
                 val i = childIndex.rem(rows)
                 val j = floor(childIndex.div(rows.toDouble())).toInt()
                 getChildAt(childIndex).layout(dividerPadding.toInt() + i * childWidth
-                        ,j * childWidth + dividerPadding.toInt(),
+                        , j * childWidth + dividerPadding.toInt(),
                         childWidth * (i + 1)
-                        ,childWidth * (j + 1))
-                adapter?.displayImage(getChildAt(childIndex) as ImageView,imageUrls?.get(childIndex)?:"")
+                        , childWidth * (j + 1))
+                adapter?.displayImage(getChildAt(childIndex) as ImageView, imageUrls?.get(childIndex)
+                        ?: "")
             }
 
-        } else if (imageCount > 0){
+        } else if (imageCount > 0) {
             val childIndex = 0
             val imageChild = getChildAt(0)
-            imageChild.layout(dividerPadding.toInt(),dividerPadding.toInt(),
-            imageChild.measuredWidth + dividerPadding.toInt(),imageChild.measuredHeight + dividerPadding.toInt())
-            adapter?.displayImage(getChildAt(childIndex) as ImageView,imageUrls?.get(childIndex)?:"")
+            imageChild.layout(dividerPadding.toInt(), dividerPadding.toInt(),
+                    imageChild.measuredWidth + dividerPadding.toInt(), imageChild.measuredHeight + dividerPadding.toInt())
+            adapter?.displayImage(getChildAt(childIndex) as ImageView, imageUrls?.get(childIndex)
+                    ?: "")
         }
     }
 
@@ -113,8 +115,8 @@ class MultiImageLayout(val ctx: Context,attrs: AttributeSet) : ViewGroup(ctx,att
         }
     }
 
-    interface  Adapter {
-        fun displayImage(image: ImageView,url:String)
+    interface Adapter {
+        fun displayImage(image: ImageView, url: String)
     }
 
 }

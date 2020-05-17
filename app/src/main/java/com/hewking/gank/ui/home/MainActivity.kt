@@ -54,14 +54,12 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
                 val girlEntity = mDatas[position]
                 holder.v<TextView>(R.id.tv_author).text = "发布者: ${girlEntity.author}"
                 holder.v<TextView>(R.id.tv_category).text = "分类: ${girlEntity.category}"
-                holder.v<TextView>(R.id.tv_desc).text = "描述: ${girlEntity.desc}"
+                holder.v<TextView>(R.id.tv_desc).text = "${girlEntity.desc}"
                 holder.v<TextView>(R.id.tv_time).text = "时间: ${girlEntity.createdAt}"
-//                holder.v<ImageView>(R.id.iv_girl).load(girlEntity.images[0])
                 val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
                 multiImageLayout.adapter = object : MultiImageLayout.Adapter {
                     override fun displayImage(image: ImageView,icon:String) {
                         image.load(icon)
-                        Log.d("displayImage",icon)
                     }
                 }
 
