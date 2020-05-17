@@ -91,7 +91,7 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
 
         } else if (imageCount > 0) {
             val childIndex = 0
-            val imageChild = getChildAt(0)
+            val imageChild = getChildAt(childIndex)
             imageChild.layout(dividerPadding.toInt(), dividerPadding.toInt(),
                     imageChild.measuredWidth + dividerPadding.toInt(), imageChild.measuredHeight + dividerPadding.toInt())
             adapter?.displayImage(getChildAt(childIndex) as ImageView, imageUrls?.get(childIndex)

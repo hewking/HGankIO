@@ -49,6 +49,7 @@ class GirlsViewModel : ViewModel(){
 
 }
 
+
 object GirlsViewModelFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
