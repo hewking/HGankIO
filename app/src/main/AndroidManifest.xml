@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hewking.gank">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!--手动初始化firebase Crashlytics sdk-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 手动初始化firebase Crashlytics sdk -->
     <meta-data
         android:name="firebase_crashlytics_collection_enabled"
-        android:value="false"/>
+        android:value="false" />
 
     <application
         android:name=".app.GankApplication"
@@ -21,19 +20,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name="com.hewking.gank.ui.home.MainActivity">
+        <activity android:name=".ui.home.HomeActivity"></activity>
+        <activity android:name=".ui.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.imageViewer.ImageViewerActivity"/>
+        <activity android:name=".ui.imageViewer.ImageViewerActivity" />
     </application>
 
 </manifest>

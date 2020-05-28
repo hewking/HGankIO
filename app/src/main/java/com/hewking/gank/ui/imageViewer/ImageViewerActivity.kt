@@ -34,7 +34,7 @@ class ImageViewerActivity : BaseActivity(){
 
     private fun initView(){
         val imageUrl = intent.getStringExtra(IMAGE_URL)
-        binding.ivViewer.load(imageUrl)
+        binding.ivViewer.load(imageUrl?:"")
     }
 
 }
