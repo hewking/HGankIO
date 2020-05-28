@@ -1,18 +1,17 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.hewking.gank.R
 import com.hewking.gank.base.BaseRecyclerActivity
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
 import com.hewking.gank.data.entity.GirlEntity
+import com.hewking.gank.ui.imageViewer.ImageViewerActivity
 import com.hewking.gank.util.ex.load
 import com.hewking.gank.viewmodels.GirlsViewModel
 import com.hewking.gank.viewmodels.GirlsViewModelFactory
@@ -32,11 +31,14 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
         viewModel.init()
     }
 
+    lateinit var iv:ImageView
+
     override fun loadData() {
         viewModel.data.observe(this, Observer<List<GirlEntity>> {
             mAdapter?.appendData(it)
             onLoadEnd()
         })
+
     }
 
     override fun refreshData() {
@@ -60,10 +62,15 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
                 multiImageLayout.adapter = object : MultiImageLayout.Adapter {
                     override fun displayImage(image: ImageView,icon:String) {
                         image.load(icon)
+                        image.also {
+                            it.setOnClickListener {
+                                ImageViewerActivity.start(this@MainActivity,icon)
+                            }
+                        }
                     }
                 }
 
-                val imageCount = Random.nextInt(0,9)
+                val imageCount = Random.nextInt(0,10)
                 val imagesUrls = with(imageCount) {
                     val res = mutableListOf<String>()
                     for (i in 0 until imageCount) {
@@ -77,13 +84,12 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
                 holder.itemView.setOnLongClickListener {
                     val dialog = AlertDialog.Builder(this@MainActivity)
                             .setMessage("是否删除当前数据")
-                            .setPositiveButton("确定") { d, v ->
-                                val data = girlEntity
-                                mAdapter?.deleteItem(data)
-                                viewModel.deleteData(data)
+                            .setPositiveButton("确定") { d, _ ->
+                                mAdapter?.deleteItem(girlEntity)
+                                viewModel.deleteData(girlEntity)
                                 d.dismiss()
                             }
-                            .setNegativeButton("取消") { d, v ->
+                            .setNegativeButton("取消") { d, _ ->
                                 d.dismiss()
                             }
                             .create()
