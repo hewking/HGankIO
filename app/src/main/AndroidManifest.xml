@@ -20,8 +20,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.home.HomeActivity"></activity>
-        <activity android:name=".ui.home.MainActivity">
+        <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +29,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.home.MainActivity">
+
         </activity>
         <activity android:name=".ui.imageViewer.ImageViewerActivity" />
     </application>
