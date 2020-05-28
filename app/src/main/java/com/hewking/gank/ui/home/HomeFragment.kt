@@ -1,16 +1,12 @@
 package com.hewking.gank.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hewking.gank.R
-import com.hewking.gank.databinding.ActivityHomeBinding
 import com.hewking.gank.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -28,13 +24,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView() {
+        val titles = arrayOf("主页","推荐","妹子","今日","Android")
         binding.viewPager.adapter = HomeAdapter(this)
-        TabLayoutMediator(binding.tablayout,binding.viewPager){tab,pos ->
-            tab.text = "Object ${pos}"
+        TabLayoutMediator(binding.tablayout, binding.viewPager) { tab, pos ->
+            tab.text = "${titles[pos]}"
         }.attach()
     }
 
-    class HomeAdapter(fragment: Fragment): FragmentStateAdapter(fragment){
+    class HomeAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         override fun getItemCount(): Int {
             return 5
         }
