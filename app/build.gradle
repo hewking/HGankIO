@@ -84,6 +84,7 @@ dependencies {
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.material:material:1.2.0-alpha06'
+    implementation "androidx.asynclayoutinflater:asynclayoutinflater:1.0.0"
 
     // Java language implementation
     implementation "androidx.activity:activity:$dependenciesVersions.activity_version"

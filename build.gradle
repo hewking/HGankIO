@@ -57,3 +57,42 @@ ext.versions = [
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task testPrint() {
+    doLast{
+        def name="zhangsan"
+        def age = 20
+        println 'this is a dog'
+        println "this is a ${name} age: ${age}"
+
+        def nums = [1,2,3,4,5]
+        println "nums:${nums.getClass().getName()} size:${nums.size()}"
+    }
+}
+
+def customEach(closure) {
+    for(int i = 0 ; i < 10 ; i ++) {
+        closure(i)
+    }
+}
+
+task testClosure() {
+    customEach{
+        println "cur : $it"
+    }
+}
+
+def eachMap(closure){
+    def map = ["name":"zhangsan"]
+    map.each {
+        closure(it.key,it.value)
+    }
+}
+
+task testClosure2(){
+    doLast{
+        eachMap{ key,value ->
+            println "${key}: ${value}"
+        }
+    }
+}
