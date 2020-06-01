@@ -2,6 +2,8 @@ package com.hewking.gank.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -14,7 +16,19 @@ import androidx.recyclerview.widget.RecyclerView
  * 修改备注：
  * Version: 1.0.0
  */
-abstract class CommonBaseAdapter<T> : RecyclerView.Adapter<CommonViewHolder<T>>(){
+
+val defaultDiffItemCallback = object: DiffUtil.ItemCallback<Any>() {
+    override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
+        TODO("Not yet implemented")
+    }
+}
+
+abstract class CommonBaseAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
+    : ListAdapter<T,CommonViewHolder<T>>(diffCallback){
 
     protected var mDatas = mutableListOf<T>()
 
@@ -57,5 +71,5 @@ abstract class CommonBaseAdapter<T> : RecyclerView.Adapter<CommonViewHolder<T>>(
             notifyItemRemoved(pos)
         }
     }
-
+    
 }

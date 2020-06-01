@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DiffUtil
 import com.hewking.gank.R
 import com.hewking.gank.base.BaseRecyclerActivity
 import com.hewking.gank.base.CommonBaseAdapter
@@ -20,18 +21,34 @@ import kotlin.random.Random
 
 class MainActivity : BaseRecyclerActivity<GirlEntity>() {
 
-//    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+    //    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+    lateinit var iv: ImageView
 
-    private val viewModel  by viewModels<GirlsViewModel> {
+    private val viewModel by viewModels<GirlsViewModel> {
         GirlsViewModelFactory
+    }
+
+    private val diffItemCallback = object : DiffUtil.ItemCallback<GirlEntity>() {
+        override fun areItemsTheSame(
+                oldItem: GirlEntity,
+                newItem: GirlEntity
+        ): Boolean {
+            return newItem.id == oldItem.id
+        }
+
+        override fun areContentsTheSame(
+                oldItem: GirlEntity,
+                newItem: GirlEntity
+        ): Boolean {
+            return oldItem.title == newItem.title
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.init()
     }
-
-    lateinit var iv:ImageView
 
     override fun loadData() {
         viewModel.data.observe(this, Observer<List<GirlEntity>> {
@@ -47,7 +64,7 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
     }
 
     override fun buildAdapter(): CommonBaseAdapter<GirlEntity> {
-        return object : CommonBaseAdapter<GirlEntity>(){
+        return object : CommonBaseAdapter<GirlEntity>(diffItemCallback) {
             override fun getItemLayoutId(viewType: Int): Int {
                 return R.layout.girls_item
             }
@@ -60,21 +77,21 @@ class MainActivity : BaseRecyclerActivity<GirlEntity>() {
                 holder.v<TextView>(R.id.tv_time).text = "时间: ${girlEntity.createdAt}"
                 val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
                 multiImageLayout.adapter = object : MultiImageLayout.Adapter {
-                    override fun displayImage(image: ImageView,icon:String) {
+                    override fun displayImage(image: ImageView, icon: String) {
                         image.load(icon)
                         image.also {
                             it.setOnClickListener {
-                                ImageViewerActivity.start(this@MainActivity,icon)
+                                ImageViewerActivity.start(this@MainActivity, icon)
                             }
                         }
                     }
                 }
 
-                val imageCount = Random.nextInt(0,10)
+                val imageCount = Random.nextInt(0, 10)
                 val imagesUrls = with(imageCount) {
                     val res = mutableListOf<String>()
                     for (i in 0 until imageCount) {
-                       res.add(girlEntity.images[0])
+                        res.add(girlEntity.images[0])
                     }
                     res
                 }

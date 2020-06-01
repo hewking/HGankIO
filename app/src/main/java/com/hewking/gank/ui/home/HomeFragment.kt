@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
         val titles = arrayOf("主页","推荐","妹子","今日","Android")
         binding.viewPager.adapter = HomeAdapter(this)
         TabLayoutMediator(binding.tablayout, binding.viewPager) { tab, pos ->
-            tab.text = "${titles[pos]}"
+            tab.text = titles[pos]
         }.attach()
     }
 
