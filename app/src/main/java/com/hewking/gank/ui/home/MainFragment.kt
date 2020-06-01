@@ -50,7 +50,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
 
     override fun loadData() {
-        viewModel.data.observe(this, Observer<List<GirlEntity>> {
+        viewModel.data.observe(viewLifecycleOwner, Observer {
             mAdapter?.appendData(it)
             onLoadEnd()
         })

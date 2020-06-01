@@ -42,6 +42,7 @@ ext.dependenciesVersions = [
         'core_ktx'        : '1.3.0',
         'activity_version': '1.1.0',
         'dagger'          : '2.24',
+        'lifecycleVersion': '2.2.0-alpha01'
 ]
 
 ext.versions = [
@@ -59,39 +60,39 @@ task clean(type: Delete) {
 }
 
 task testPrint() {
-    doLast{
-        def name="zhangsan"
+    doLast {
+        def name = "zhangsan"
         def age = 20
         println 'this is a dog'
         println "this is a ${name} age: ${age}"
 
-        def nums = [1,2,3,4,5]
+        def nums = [1, 2, 3, 4, 5]
         println "nums:${nums.getClass().getName()} size:${nums.size()}"
     }
 }
 
 def customEach(closure) {
-    for(int i = 0 ; i < 10 ; i ++) {
+    for (int i = 0; i < 10; i++) {
         closure(i)
     }
 }
 
 task testClosure() {
-    customEach{
+    customEach {
         println "cur : $it"
     }
 }
 
-def eachMap(closure){
-    def map = ["name":"zhangsan"]
+def eachMap(closure) {
+    def map = ["name": "zhangsan"]
     map.each {
-        closure(it.key,it.value)
+        closure(it.key, it.value)
     }
 }
 
-task testClosure2(){
-    doLast{
-        eachMap{ key,value ->
+task testClosure2() {
+    doLast {
+        eachMap { key, value ->
             println "${key}: ${value}"
         }
     }
