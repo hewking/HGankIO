@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 kapt {
     generateStubs = true
@@ -127,8 +128,15 @@ dependencies {
     implementation "androidx.room:room-runtime:$dependenciesVersions.room"
 
     // Navigation
-//    implementation "androidx.navigation:navigation-fragment:$dependenciesVersions.navigation"
-//    implementation "androidx.navigation:navigation-ui:$dependenciesVersions.navigation"
+    implementation "androidx.navigation:navigation-fragment:$dependenciesVersions.nav_version"
+    implementation "androidx.navigation:navigation-ui:$dependenciesVersions.nav_version"
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$dependenciesVersions.nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$dependenciesVersions.nav_version"
+    // Dynamic Feature Module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$dependenciesVersions.nav_version"
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$dependenciesVersions.nav_version"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 

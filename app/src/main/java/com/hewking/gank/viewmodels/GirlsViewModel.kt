@@ -7,8 +7,7 @@ import com.hewking.gank.app.GankApplication
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.data.repo.GirlsRepo
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * @program: HGankIO
@@ -25,7 +24,7 @@ class GirlsViewModel : ViewModel(){
 
     lateinit var data : LiveData<List<GirlEntity>>
 
-    lateinit var girlsRepo: GirlsRepo
+    private lateinit var girlsRepo: GirlsRepo
 
     fun init(){
         girlsRepo = GirlsRepo(GankApplication.getApp())
