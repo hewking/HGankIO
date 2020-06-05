@@ -1,6 +1,6 @@
-package com.hewking.gank.api
+package com.hewking.gank.infrastructure.network
 
-import com.hewking.gank.app.C
+import com.hewking.gank.config.BASEURL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

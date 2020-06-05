@@ -1,8 +1,8 @@
 package com.hewking.gank.data.model
 
 import com.hewking.gank.api.Api
-import com.hewking.gank.api.GankRetrofit
-import com.hewking.gank.api.network.Rx
+import com.hewking.gank.infrastructure.network.GankRetrofit
+import com.hewking.gank.infrastructure.network.Rx
 import com.hewking.gank.data.entity.GirlEntity
 import io.reactivex.Observable
 

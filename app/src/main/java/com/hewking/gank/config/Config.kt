@@ -1,4 +1,4 @@
-package com.hewking.gank.app
+package com.hewking.gank.config
 
 /**
  * @program: HGankIO
@@ -6,7 +6,7 @@ package com.hewking.gank.app
  * @author: hewking
  * @create: 2019-02-23 17:37
  **/
-object C {
+object Config {
 
     const val BASEURL : String = "http://gank.io"
 

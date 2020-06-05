@@ -1,7 +1,6 @@
-package com.hewking.gank.api.network
+package com.hewking.gank.infrastructure.network
 
-import com.hewking.gank.api.StatusCode
-import com.hewking.gank.api.network.type.TypeBuilder
+import com.hewking.gank.infrastructure.network.type.TypeBuilder
 import com.hewking.gank.util.GsonUtil
 import io.reactivex.Observable
 import io.reactivex.ObservableSource

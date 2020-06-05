@@ -1,4 +1,4 @@
-package com.hewking.gank.api.network.type;
+package com.hewking.gank.infrastructure.network.type;
 
 import android.annotation.TargetApi;
 import android.os.Build;

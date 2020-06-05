@@ -11,5 +11,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        if (actionBar == null) {
+            setSupportActionBar(binding.toolbar)
+        }
     }
 }

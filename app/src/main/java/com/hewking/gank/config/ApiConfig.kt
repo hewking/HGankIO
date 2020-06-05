@@ -1,3 +1,3 @@
-package com.hewking.gank.api
+package com.hewking.gank.config
 
 const val BASEURL : String = "https://gank.io"

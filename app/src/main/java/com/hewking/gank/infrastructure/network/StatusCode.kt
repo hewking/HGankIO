@@ -1,4 +1,4 @@
-package com.hewking.gank.api
+package com.hewking.gank.infrastructure.network
 
 /**
  * 定义网络请求api的状态码
