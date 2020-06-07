@@ -1,6 +1,7 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -84,10 +85,18 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
                 holder.v<TextView>(R.id.tv_category).text = getString(R.string.home_category_text, girlEntity.category)
                 holder.v<TextView>(R.id.tv_desc).text = girlEntity.desc
                 val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
-                multiImageLayout.adapter = mDisplayImageAdapter
-
                 multiImageLayout.imageUrls = girlEntity.images
-
+                multiImageLayout.adapter = object : MultiImageLayout.Adapter {
+                    override fun displayImage(image: ImageView, url: String) {
+                        image.load(url)
+                        image.also {
+                            it.setOnClickListener {
+                                ImageViewerActivity.start(this@MainFragment.requireActivity(), url)
+                            }
+                        }
+                        Log.d("displayImage","url ${url} pos:$position")
+                    }
+                }
                 holder.itemView.setOnLongClickListener {
                     val dialog = AlertDialog.Builder(this@MainFragment.requireActivity())
                             .setMessage("是否删除当前数据")
