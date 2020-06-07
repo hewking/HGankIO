@@ -26,6 +26,9 @@ class HomeFragment : Fragment() {
     private fun setupView() {
         val titles = arrayOf("主页","推荐","妹子","今日","Android")
         binding.viewPager.adapter = HomeAdapter(this)
+        with(binding.viewPager) {
+            this.offscreenPageLimit = 5
+        }
         TabLayoutMediator(binding.tablayout, binding.viewPager) { tab, pos ->
             tab.text = titles[pos]
         }.attach()

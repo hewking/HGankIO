@@ -1,6 +1,7 @@
 package com.hewking.gank.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
@@ -60,10 +61,6 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
             }
         }
 
-        if (isInEditMode) {
-            hSize = 300
-        }
-
         setMeasuredDimension(wSize, hSize)
     }
 
@@ -106,6 +103,16 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        removeAllViews()
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        initAllImageView()
     }
 
     private fun initAllImageView() {

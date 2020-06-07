@@ -70,6 +70,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
                     ImageViewerActivity.start(this@MainFragment.requireActivity(), url)
                 }
             }
+            Log.d("displayImage","url ${url}")
         }
     }
 
@@ -86,19 +87,9 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
                 holder.v<TextView>(R.id.tv_desc).text = girlEntity.desc
                 val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
                 multiImageLayout.imageUrls = girlEntity.images
-                multiImageLayout.adapter = object : MultiImageLayout.Adapter {
-                    override fun displayImage(image: ImageView, url: String) {
-                        image.load(url)
-                        image.also {
-                            it.setOnClickListener {
-                                ImageViewerActivity.start(this@MainFragment.requireActivity(), url)
-                            }
-                        }
-                        Log.d("displayImage","url ${url} pos:$position")
-                    }
-                }
+                multiImageLayout.adapter = mDisplayImageAdapter
                 holder.itemView.setOnLongClickListener {
-                    val dialog = AlertDialog.Builder(this@MainFragment.requireActivity())
+                    AlertDialog.Builder(this@MainFragment.requireActivity())
                             .setMessage("是否删除当前数据")
                             .setPositiveButton("确定") { d, _ ->
                                 mAdapter?.deleteItem(girlEntity)
