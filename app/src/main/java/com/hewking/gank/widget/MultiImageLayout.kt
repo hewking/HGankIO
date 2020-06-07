@@ -54,8 +54,8 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
                     }
                     ceil(imageCount.div(rows.toDouble())).toInt() * imageWidth
                 } else {
-                    getChildAt(0).measure(MeasureSpec.makeMeasureSpec(wSize - 2 * dividerPadding.toInt(),MeasureSpec.AT_MOST)
-                            , MeasureSpec.makeMeasureSpec(wSize - 2 * dividerPadding.toInt(),MeasureSpec.AT_MOST))
+                    getChildAt(0).measure(MeasureSpec.makeMeasureSpec(wSize - 2 * dividerPadding.toInt(),MeasureSpec.EXACTLY)
+                            , MeasureSpec.makeMeasureSpec(wSize - 2 * dividerPadding.toInt(),MeasureSpec.EXACTLY))
                     wSize
                 }
             }
