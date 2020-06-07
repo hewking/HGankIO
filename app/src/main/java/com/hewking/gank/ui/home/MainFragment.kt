@@ -58,6 +58,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     override fun refreshData() {
         super.refreshData()
+        onLoadEnd()
     }
 
     private val mDisplayImageAdapter = object : MultiImageLayout.Adapter {

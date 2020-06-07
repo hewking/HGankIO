@@ -68,4 +68,8 @@ abstract class BaseRecyclerFragment<T> : Fragment(){
         refreshlayout.isRefreshing = false
     }
 
+    protected open fun onRefreshEnd(){
+        refreshlayout.isRefreshing = false
+    }
+
 }
