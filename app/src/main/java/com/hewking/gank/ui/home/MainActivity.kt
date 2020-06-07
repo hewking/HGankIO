@@ -1,10 +1,10 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.hewking.gank.base.BaseActivity
 import com.hewking.gank.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
 
