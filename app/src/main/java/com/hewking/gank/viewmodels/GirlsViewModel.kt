@@ -40,9 +40,9 @@ class GirlsViewModel : ViewModel(){
         compositeDisposable.clear()
     }
 
-    fun deleteData(gankDayBean: GirlEntity) {
+    fun deleteData(entity: GirlEntity) {
         GlobalScope.launch {
-            girlsRepo.deleteFromCache(gankDayBean)
+            girlsRepo.deleteFromCache(entity)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -59,6 +60,17 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
         super.refreshData()
     }
 
+    private val mDisplayImageAdapter = object : MultiImageLayout.Adapter {
+        override fun displayImage(image: ImageView, url: String) {
+            image.load(url)
+            image.also {
+                it.setOnClickListener {
+                    ImageViewerActivity.start(this@MainFragment.requireActivity(), url)
+                }
+            }
+        }
+    }
+
     override fun buildAdapter(): CommonBaseAdapter<GirlEntity> {
         return object : CommonBaseAdapter<GirlEntity>(diffItemCallback) {
             override fun getItemLayoutId(viewType: Int): Int {
@@ -67,31 +79,13 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
             override fun onBindViewHolder(holder: CommonViewHolder<GirlEntity>, position: Int) {
                 val girlEntity = mDatas[position]
-                holder.v<TextView>(R.id.tv_author).text = getString(R.string.home_publish_text,girlEntity.author)
-                holder.v<TextView>(R.id.tv_category).text = getString(R.string.home_category_text,girlEntity.category)
+                holder.v<TextView>(R.id.tv_author).text = getString(R.string.home_publish_text, girlEntity.author)
+                holder.v<TextView>(R.id.tv_category).text = getString(R.string.home_category_text, girlEntity.category)
                 holder.v<TextView>(R.id.tv_desc).text = girlEntity.desc
                 val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
-                multiImageLayout.adapter = object : MultiImageLayout.Adapter {
-                    override fun displayImage(image: ImageView, icon: String) {
-                        image.load(icon)
-                        image.also {
-                            it.setOnClickListener {
-                                ImageViewerActivity.start(this@MainFragment.requireActivity(), icon)
-                            }
-                        }
-                    }
-                }
+                multiImageLayout.adapter = mDisplayImageAdapter
 
-                val imageCount = Random.nextInt(0, 10)
-                val imagesUrls = with(imageCount) {
-                    val res = mutableListOf<String>()
-                    for (i in 0 until imageCount) {
-                        res.add(girlEntity.images[0])
-                    }
-                    res
-                }
-
-                multiImageLayout.imageUrls = imagesUrls
+                multiImageLayout.imageUrls = girlEntity.images
 
                 holder.itemView.setOnLongClickListener {
                     val dialog = AlertDialog.Builder(this@MainFragment.requireActivity())
