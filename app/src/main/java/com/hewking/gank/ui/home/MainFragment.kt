@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import com.hewking.gank.R
-import com.hewking.gank.base.BaseRecyclerActivity
 import com.hewking.gank.base.BaseRecyclerFragment
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
@@ -18,9 +17,7 @@ import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.ui.imageViewer.ImageViewerActivity
 import com.hewking.gank.util.ex.load
 import com.hewking.gank.viewmodels.GirlsViewModel
-import com.hewking.gank.viewmodels.GirlsViewModelFactory
 import com.hewking.gank.widget.MultiImageLayout
-import kotlin.random.Random
 
 class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
@@ -49,16 +46,15 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.data.observe(viewLifecycleOwner, Observer {
-            mAdapter?.appendData(it)
-            Log.d("MainFragment","appendDaaa size:${it.size}")
+        viewModel.girls.observe(viewLifecycleOwner, Observer {
+            Log.d("MainFragment","submitList ${it.size}")
+            mAdapter?.submitList(it)
             onLoadEnd()
         })
     }
 
 
     override fun loadData() {
-        Log.d("MainFragment","loadData")
     }
 
     override fun refreshData() {
@@ -84,7 +80,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
             }
 
             override fun onBindViewHolder(holder: CommonViewHolder<GirlEntity>, position: Int) {
-                val girlEntity = mDatas[position]
+                val girlEntity = getItem(position)
                 holder.v<TextView>(R.id.tv_author).text = getString(R.string.home_publish_text, girlEntity.author)
                 holder.v<TextView>(R.id.tv_category).text = getString(R.string.home_category_text, girlEntity.category)
                 holder.v<TextView>(R.id.tv_desc).text = girlEntity.desc

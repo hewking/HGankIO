@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
 
     class HomeAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         override fun getItemCount(): Int {
-            return 1
+            return 5
         }
 
         override fun createFragment(position: Int): Fragment {

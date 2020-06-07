@@ -2,9 +2,7 @@ package com.hewking.gank.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 
 /**
  * 项目名称：FlowChat
@@ -17,59 +15,69 @@ import androidx.recyclerview.widget.RecyclerView
  * Version: 1.0.0
  */
 
-val defaultDiffItemCallback = object: DiffUtil.ItemCallback<Any>() {
-    override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
-        TODO("Not yet implemented")
-    }
-}
-
 abstract class CommonBaseAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
-    : ListAdapter<T,CommonViewHolder<T>>(diffCallback){
+    : RecyclerView.Adapter<CommonViewHolder<T>>() {
 
-    protected var mDatas = mutableListOf<T>()
+    protected val mDiffer = AsyncListDiffer<T>(
+            AdapterListUpdateCallback(this),
+            AsyncDifferConfig.Builder(diffCallback).build()
+    )
+
+    private val mListener = AsyncListDiffer.ListListener<T> { previousList, currentList ->
+        this.onCurrentListChanged(previousList,currentList)
+    }
+
+    init {
+        mDiffer.addListListener(mListener)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommonViewHolder<T> {
         val layoutId = getItemLayoutId(viewType)
-        if ( layoutId== -1) {
+        if (layoutId == -1) {
             throw IllegalArgumentException("layoutId 无效")
         }
-        val itemView = LayoutInflater.from(parent.context).inflate(layoutId,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return CommonViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int {
-        return mDatas.size
+    override fun onBindViewHolder(holder: CommonViewHolder<T>, position: Int) {
+        holder.bind(position, getItem(position), getItemViewType(position))
     }
 
-    override fun onBindViewHolder(holder: CommonViewHolder<T>, position: Int) {
-        holder.bind(position,mDatas[position],getItemViewType(position))
+    override fun getItemCount(): Int {
+        return mDiffer.currentList.size
+    }
+
+    open fun getCurrentList(): List<T>? {
+        return mDiffer.currentList
+    }
+
+    open fun submitList(list: List<T>?) {
+        mDiffer.submitList(list)
+    }
+
+    open fun submitList(list: List<T>?, commitCallback: Runnable?) {
+        mDiffer.submitList(list, commitCallback)
+    }
+
+    protected open fun getItem(position: Int): T {
+        return mDiffer.currentList[position]
     }
 
     override fun getItemViewType(position: Int): Int {
         return super.getItemViewType(position)
     }
 
-    fun appendData(datas : List<T>){
-        if (datas.isNotEmpty()) {
-            val oldSize = mDatas.size
-            val count = datas.size - oldSize
-            mDatas.addAll(datas)
-            notifyItemRangeInserted(oldSize,count)
-        }
-    }
-
-    protected abstract fun getItemLayoutId(viewType : Int) : Int
+    protected abstract fun getItemLayoutId(viewType: Int): Int
 
     fun deleteItem(t: T) {
-        val pos = mDatas.indexOf(t)
+        val pos = mDiffer.currentList.indexOf(t)
         if (pos != -1) {
-            mDatas.removeAt(pos)
+            mDiffer.currentList.removeAt(pos)
             notifyItemRemoved(pos)
         }
     }
-    
+
+    open fun onCurrentListChanged(previousList: List<T>, currentList: List<T>) {}
+
 }

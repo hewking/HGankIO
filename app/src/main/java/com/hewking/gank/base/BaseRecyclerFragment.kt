@@ -60,10 +60,6 @@ abstract class BaseRecyclerFragment<T> : Fragment(){
         refreshlayout.isRefreshing = true
     }
 
-    protected fun appendData(datas : List<T>){
-        mAdapter?.appendData(datas)
-    }
-
     protected open fun onLoadEnd(){
         refreshlayout.isRefreshing = false
     }
