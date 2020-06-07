@@ -105,16 +105,6 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
         super.onSizeChanged(w, h, oldw, oldh)
     }
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        removeAllViews()
-    }
-
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        initAllImageView()
-    }
-
     private fun initAllImageView() {
         removeAllViews()
         imageUrls?.let {

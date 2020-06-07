@@ -45,16 +45,20 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.init()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            mAdapter?.appendData(it)
+            Log.d("MainFragment","appendDaaa size:${it.size}")
+            onLoadEnd()
+        })
     }
 
 
     override fun loadData() {
-        viewModel.data.observe(viewLifecycleOwner, Observer {
-            mAdapter?.appendData(it)
-            onLoadEnd()
-        })
-
+        Log.d("MainFragment","loadData")
     }
 
     override fun refreshData() {

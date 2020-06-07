@@ -22,17 +22,12 @@ class GirlsViewModel : ViewModel(){
 
     private val compositeDisposable by lazy {CompositeDisposable()}
 
-    lateinit var data : LiveData<List<GirlEntity>>
+    var data : LiveData<List<GirlEntity>>
 
-    private lateinit var girlsRepo: GirlsRepo
+    private var girlsRepo: GirlsRepo = GirlsRepo(GankApplication.getApp())
 
-    fun init(){
-        girlsRepo = GirlsRepo(GankApplication.getApp())
-        runBlocking {
-            launch {
-                data = girlsRepo.getGirls()
-            }
-        }
+    init{
+        data = girlsRepo.getGirls()
     }
 
     override fun onCleared() {
