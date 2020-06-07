@@ -86,6 +86,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation "androidx.asynclayoutinflater:asynclayoutinflater:1.0.0"
 
+    // svg 支持库
+    implementation "androidx.vectordrawable:vectordrawable:$dependenciesVersions.vectordrawable_version"
+    /* To be able to animate properties of a VectorDrawable, add the following.  Useful for
+     * illustration purposes or state changes in response to user events
+     */
+    implementation "androidx.vectordrawable:vectordrawable-animated:$dependenciesVersions.vectordrawable_version"
+
     // Java language implementation
     implementation "androidx.activity:activity:$dependenciesVersions.activity_version"
     // Kotlin ktx

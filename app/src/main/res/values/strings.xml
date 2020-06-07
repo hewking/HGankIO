@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">gank</string>
+    <string name="app_title">干货</string>
     <string name="home_publish_text">发布者: %1$s</string>
     <string name="home_category_text">分类: %1$s</string>
     <string name="home_time_text">时间: %1$s</string>
