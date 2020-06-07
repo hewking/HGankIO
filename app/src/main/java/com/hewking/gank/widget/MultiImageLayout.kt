@@ -42,6 +42,7 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
                 3
             }
         }
+
         if (wMode == MeasureSpec.EXACTLY && childCount > 0) {
             if (imageCount > 0) {
                 hSize = if (imageCount > 1) {
@@ -57,6 +58,10 @@ class MultiImageLayout(val ctx: Context, attrs: AttributeSet) : ViewGroup(ctx, a
                     wSize
                 }
             }
+        }
+
+        if (isInEditMode) {
+            hSize = 300
         }
 
         setMeasuredDimension(wSize, hSize)

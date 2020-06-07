@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Widget">
+
+    </style>
+
+    <style name="Widget.Text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondTextColor</item>
+    </style>
+
+    <style name="Widget.Text.Main">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+    </style>
+
+    <style name="Widget.Text.Main.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.Text.Second">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/secondTextColor</item>
+    </style>
+
 </resources>

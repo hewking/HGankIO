@@ -14,14 +14,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:dividerPadding="3dp"
+        tools:layout_height="300dp"
         />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="14sp"
-        android:textColor="@color/primaryTextColor"
+        style="@style/Widget.Text.Second"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/multyImage"
         tools:text="hewking"/>
@@ -30,33 +30,23 @@
         android:id="@+id/tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="14sp"
-        android:textColor="@color/primaryTextColor"
+        style="@style/Widget.Text.Second"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/multyImage"
-        tools:text="hewking"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="14sp"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_author"
+        app:layout_constraintBottom_toTopOf="@id/tv_desc"
         tools:text="hewking"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_desc"
+        style="@style/Widget.Text.Second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="14sp"
-        android:textColor="@color/primaryTextColor"
+        android:layout_marginBottom="1dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_time"
-        tools:text="hewking"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_author"
+        tools:text="hewking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

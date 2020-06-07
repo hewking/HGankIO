@@ -28,7 +28,11 @@ class GirlsViewModel : ViewModel(){
 
     fun init(){
         girlsRepo = GirlsRepo(GankApplication.getApp())
-        data = girlsRepo.getGirls()
+        runBlocking {
+            launch {
+                data = girlsRepo.getGirls()
+            }
+        }
     }
 
     override fun onCleared() {
@@ -40,10 +44,6 @@ class GirlsViewModel : ViewModel(){
         GlobalScope.launch {
             girlsRepo.deleteFromCache(gankDayBean)
         }
-    }
-
-    fun refresh() {
-//        girlsRepo.refresh()
     }
 
 }

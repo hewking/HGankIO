@@ -41,8 +41,6 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     }
 
-    lateinit var iv: ImageView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.init()
@@ -59,7 +57,6 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     override fun refreshData() {
         super.refreshData()
-        viewModel.refresh()
     }
 
     override fun buildAdapter(): CommonBaseAdapter<GirlEntity> {
@@ -70,17 +67,16 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
             override fun onBindViewHolder(holder: CommonViewHolder<GirlEntity>, position: Int) {
                 val girlEntity = mDatas[position]
-                holder.v<TextView>(R.id.tv_author).text = "发布者: ${girlEntity.author}"
-                holder.v<TextView>(R.id.tv_category).text = "分类: ${girlEntity.category}"
-                holder.v<TextView>(R.id.tv_desc).text = "${girlEntity.desc}"
-                holder.v<TextView>(R.id.tv_time).text = "时间: ${girlEntity.createdAt}"
+                holder.v<TextView>(R.id.tv_author).text = getString(R.string.home_publish_text,girlEntity.author)
+                holder.v<TextView>(R.id.tv_category).text = getString(R.string.home_category_text,girlEntity.category)
+                holder.v<TextView>(R.id.tv_desc).text = girlEntity.desc
                 val multiImageLayout = holder.v<MultiImageLayout>(R.id.multyImage)
                 multiImageLayout.adapter = object : MultiImageLayout.Adapter {
                     override fun displayImage(image: ImageView, icon: String) {
                         image.load(icon)
                         image.also {
                             it.setOnClickListener {
-                                ImageViewerActivity.start(this@MainFragment.activity!!, icon)
+                                ImageViewerActivity.start(this@MainFragment.requireActivity(), icon)
                             }
                         }
                     }
@@ -98,7 +94,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
                 multiImageLayout.imageUrls = imagesUrls
 
                 holder.itemView.setOnLongClickListener {
-                    val dialog = AlertDialog.Builder(this@MainFragment.activity!!)
+                    val dialog = AlertDialog.Builder(this@MainFragment.requireActivity())
                             .setMessage("是否删除当前数据")
                             .setPositiveButton("确定") { d, _ ->
                                 mAdapter?.deleteItem(girlEntity)
