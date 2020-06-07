@@ -70,6 +70,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
                     ImageViewerActivity.start(this@MainFragment.requireActivity(), url)
                 }
             }
+            // TODO("滑动列表和切换tablayout 图片有加载不出来的情况")
             Log.d("displayImage","url ${url}")
         }
     }
