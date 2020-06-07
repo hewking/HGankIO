@@ -56,7 +56,7 @@ abstract class CommonBaseAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
     fun appendData(datas : List<T>){
         if (datas.isNotEmpty()) {
             val oldSize = mDatas.size
-            val count = datas.size
+            val count = datas.size - oldSize
             mDatas.addAll(datas)
             notifyItemRangeInserted(oldSize,count)
         }
