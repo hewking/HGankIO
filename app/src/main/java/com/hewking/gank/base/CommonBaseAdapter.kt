@@ -70,6 +70,15 @@ abstract class CommonBaseAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
 
     protected abstract fun getItemLayoutId(viewType: Int): Int
 
+    fun appendData(datas : List<T>){
+        if (datas.isNotEmpty()) {
+            val oldSize = mDiffer.currentList.size
+            val count = datas.size - oldSize
+            mDiffer.currentList.addAll(datas)
+            notifyItemRangeInserted(oldSize,count)
+        }
+    }
+
     fun deleteItem(t: T) {
         val pos = mDiffer.currentList.indexOf(t)
         if (pos != -1) {

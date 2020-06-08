@@ -47,6 +47,10 @@ abstract class BaseRecyclerActivity<T> : BaseActivity(){
 
     abstract fun buildAdapter(): CommonBaseAdapter<T>
 
+    protected fun appendData(datas : List<T>){
+        mAdapter?.appendData(datas)
+    }
+
     protected open fun refreshData(){
         refreshlayout.isRefreshing = true
     }

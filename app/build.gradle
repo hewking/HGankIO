@@ -145,10 +145,19 @@ dependencies {
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$dependenciesVersions.nav_version"
 
+    // paging of jetpack
+    implementation "androidx.paging:paging-runtime-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-common-ktx
+
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-rxjava2-ktx
+
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 
     // Required for instrumented tests
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 }
