@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
  * @author: hewking
  * @create: 2019-02-23 17:31
  **/
-class GirlsRepo(private val context: Context) {
+class GirlsRepo(context: Context) {
 
     private lateinit var girls: LiveData<List<GirlEntity>>
     private val girlDao: GirlDao = AppDatabase.getInstance(context).getGirlDao()

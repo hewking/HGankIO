@@ -47,7 +47,6 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.girls.observe(viewLifecycleOwner, Observer {
-            Log.d("MainFragment","submitList ${it.size}")
             mAdapter?.submitList(it)
             onLoadEnd()
         })
