@@ -85,6 +85,8 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation "androidx.asynclayoutinflater:asynclayoutinflater:1.0.0"
+    // photoview
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     // svg 支持库
     implementation "androidx.vectordrawable:vectordrawable:$dependenciesVersions.vectordrawable_version"
