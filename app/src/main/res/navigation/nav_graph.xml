@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.hewking.gank.ui.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_imageViewerActivity"
             app:destination="@id/imageViewerActivity"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <argument
+            android:name="link"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <activity
         android:id="@+id/imageViewerActivity"
         android:name="com.hewking.gank.ui.imageViewer.ImageViewerActivity"
-        android:label="ImageViewerActivity" />
+        android:label="ImageViewerActivity"
+        tools:layout="@layout/activity_image_viewer">
+    </activity>
 </navigation>
