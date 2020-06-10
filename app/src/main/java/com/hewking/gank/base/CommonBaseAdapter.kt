@@ -19,7 +19,7 @@ import java.util.*
 abstract class CommonBaseAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
     : RecyclerView.Adapter<CommonViewHolder<T>>() {
 
-    protected val mDiffer = AsyncListDiffer<T>(
+    private val mDiffer = AsyncListDiffer<T>(
             AdapterListUpdateCallback(this),
             AsyncDifferConfig.Builder(diffCallback).build()
     )
