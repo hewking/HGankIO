@@ -21,24 +21,26 @@ import com.hewking.gank.widget.MultiImageLayout
 
 class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
-    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+    companion object {
+        private val diffItemCallback = object : DiffUtil.ItemCallback<GirlEntity>() {
+            override fun areItemsTheSame(
+                    oldItem: GirlEntity,
+                    newItem: GirlEntity
+            ): Boolean {
+                return newItem.id == oldItem.id
+            }
 
-    private val diffItemCallback = object : DiffUtil.ItemCallback<GirlEntity>() {
-        override fun areItemsTheSame(
-                oldItem: GirlEntity,
-                newItem: GirlEntity
-        ): Boolean {
-            return newItem.id == oldItem.id
+            override fun areContentsTheSame(
+                    oldItem: GirlEntity,
+                    newItem: GirlEntity
+            ): Boolean {
+                return oldItem.title == newItem.title
+            }
+
         }
-
-        override fun areContentsTheSame(
-                oldItem: GirlEntity,
-                newItem: GirlEntity
-        ): Boolean {
-            return oldItem.title == newItem.title
-        }
-
     }
+
+    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
