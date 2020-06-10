@@ -14,7 +14,7 @@ import com.hewking.gank.base.BaseRecyclerFragment
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
 import com.hewking.gank.data.entity.GirlEntity
-import com.hewking.gank.ui.imageViewer.ImageViewerActivity
+import com.hewking.gank.ui.imageViewer.ImageViewerActivity as ImageViewer
 import com.hewking.gank.util.ex.load
 import com.hewking.gank.viewmodels.GirlsViewModel
 import com.hewking.gank.widget.MultiImageLayout
@@ -68,7 +68,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
             image.load(url)
             image.also {
                 it.setOnClickListener {
-                    ImageViewerActivity.start(this@MainFragment.requireActivity(), url)
+                    ImageViewer.start(this@MainFragment.requireActivity(), url)
                 }
             }
         }
