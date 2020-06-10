@@ -3,6 +3,8 @@ package com.hewking.gank.data.repo
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import com.hewking.gank.data.database.AppDatabase
 import com.hewking.gank.data.database.dao.GirlDao
 import com.hewking.gank.data.entity.GirlEntity
@@ -18,7 +20,7 @@ import io.reactivex.schedulers.Schedulers
  **/
 class GirlsRepo(context: Context) {
 
-    private lateinit var girls: LiveData<List<GirlEntity>>
+    private lateinit var girls: LiveData<PagedList<GirlEntity>>
     private val girlDao: GirlDao = AppDatabase.getInstance(context).getGirlDao()
     private val disposable = CompositeDisposable()
 
@@ -26,8 +28,8 @@ class GirlsRepo(context: Context) {
         GirlsModel()
     }
 
-    fun getGirls(): LiveData<List<GirlEntity>> {
-        girls = girlDao.getAllGirls()
+    fun getGirls(): LiveData<PagedList<GirlEntity>> {
+        girls = girlDao.getAllGirls().toLiveData(pageSize = 10)
         refresh()
         return girls
     }

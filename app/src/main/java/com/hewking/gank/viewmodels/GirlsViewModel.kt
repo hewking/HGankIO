@@ -3,6 +3,7 @@ package com.hewking.gank.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagedList
 import com.hewking.gank.app.GankApplication
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.data.repo.GirlsRepo
@@ -22,7 +23,7 @@ class GirlsViewModel : ViewModel(){
 
     private val compositeDisposable by lazy {CompositeDisposable()}
 
-    var girls : LiveData<List<GirlEntity>>
+    var girls : LiveData<PagedList<GirlEntity>>
 
     private var girlsRepo: GirlsRepo = GirlsRepo(GankApplication.getApp())
 
