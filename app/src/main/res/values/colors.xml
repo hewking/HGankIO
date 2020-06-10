@@ -6,4 +6,5 @@
     <color name="primaryTextColor">@color/colorAccent</color>
     <color name="mainTextColor">#000000</color>
     <color name="secondTextColor">#999999</color>
+    <color name="black">#000000</color>
 </resources>
