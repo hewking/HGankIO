@@ -3,6 +3,7 @@ package com.hewking.gank.base
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.*
+import java.util.*
 
 /**
  * 项目名称：FlowChat
@@ -72,18 +73,18 @@ abstract class CommonBaseAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
 
     fun appendData(datas : List<T>){
         if (datas.isNotEmpty()) {
-            val oldSize = mDiffer.currentList.size
-            val count = datas.size - oldSize
-            mDiffer.currentList.addAll(datas)
-            notifyItemRangeInserted(oldSize,count)
+            val list = mDiffer.currentList.toMutableList()
+            list.addAll(datas)
+            submitList(list)
         }
     }
 
     fun deleteItem(t: T) {
         val pos = mDiffer.currentList.indexOf(t)
         if (pos != -1) {
-            mDiffer.currentList.removeAt(pos)
-            notifyItemRemoved(pos)
+            val newDatas = mDiffer.currentList.toMutableList()
+            newDatas.removeAt(pos)
+            submitList(newDatas)
         }
     }
 
