@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
@@ -40,7 +41,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
         }
     }
 
-    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
+    private val viewModel : GirlsViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
