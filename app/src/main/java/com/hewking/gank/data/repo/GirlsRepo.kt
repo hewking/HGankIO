@@ -5,12 +5,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
+import com.hewking.gank.api.Api
 import com.hewking.gank.data.database.AppDatabase
 import com.hewking.gank.data.database.dao.GirlDao
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.data.model.GirlsModel
+import com.hewking.gank.infra.network.GankRetrofit
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.flow.flow
 
 /**
  * @program: HGankIO
@@ -21,16 +24,13 @@ import io.reactivex.schedulers.Schedulers
 class GirlsRepo(context: Context) {
 
     private lateinit var girls: LiveData<PagedList<GirlEntity>>
-    private val girlDao: GirlDao = AppDatabase.getInstance(context).getGirlDao()
-    private val disposable = CompositeDisposable()
 
-    private val girlsModel by lazy {
-        GirlsModel()
-    }
+    private val girlDao: GirlDao = AppDatabase.getInstance(context).getGirlDao()
+
+    private val service = GankRetrofit.create(Api::class.java)
 
     fun getGirls(): LiveData<PagedList<GirlEntity>> {
         girls = girlDao.getAllGirls().toLiveData(pageSize = 10)
-        refresh()
         return girls
     }
 
@@ -38,14 +38,11 @@ class GirlsRepo(context: Context) {
         girlDao.delete(girl)
     }
 
-    fun refresh() {
-        disposable.add(girlsModel.getGirls()
-                .observeOn(Schedulers.io())
-                .subscribe({
-                    girlDao.insertAll(it)
-                }, {
-                    it.printStackTrace()
-                }))
+    suspend fun refresh() {
+        val girls = service.getGirls()
+        girlDao.insertAll(girls.data?:return)
+
     }
+
 
 }

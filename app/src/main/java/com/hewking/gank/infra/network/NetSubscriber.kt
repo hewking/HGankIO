@@ -1,4 +1,4 @@
-package com.hewking.gank.infrastructure.network
+package com.hewking.gank.infra.network
 
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable

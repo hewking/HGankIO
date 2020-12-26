@@ -1,4 +1,4 @@
-package com.hewking.gank.infrastructure.network.type;
+package com.hewking.gank.infra.network.type;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;

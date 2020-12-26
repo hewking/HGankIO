@@ -2,12 +2,10 @@ package com.hewking.gank.ui.imageViewer
 
 import android.app.Activity
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
-import androidx.viewbinding.ViewBinding
 import com.hewking.gank.base.BaseActivity
 import com.hewking.gank.databinding.ActivityImageViewerBinding
-import com.hewking.gank.util.ex.load
+import com.hewking.gank.extensions.load
 
 class ImageViewerActivity : BaseActivity(){
 

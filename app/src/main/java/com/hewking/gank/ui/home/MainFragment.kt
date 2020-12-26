@@ -1,12 +1,10 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
@@ -16,7 +14,7 @@ import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
 import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.ui.imageViewer.ImageViewerActivity as ImageViewer
-import com.hewking.gank.util.ex.load
+import com.hewking.gank.extensions.load
 import com.hewking.gank.viewmodels.GirlsViewModel
 import com.hewking.gank.widget.MultiImageLayout
 
@@ -41,7 +39,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
         }
     }
 
-    private val viewModel : GirlsViewModel by activityViewModels()
+    private val viewModel = ViewModelProvider.NewInstanceFactory().create(GirlsViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

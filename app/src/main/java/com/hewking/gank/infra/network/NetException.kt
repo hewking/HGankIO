@@ -1,4 +1,4 @@
-package com.hewking.gank.infrastructure.network
+package com.hewking.gank.infra.network
 
 import java.lang.Exception
 

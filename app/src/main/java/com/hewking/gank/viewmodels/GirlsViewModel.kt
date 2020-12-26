@@ -3,6 +3,7 @@ package com.hewking.gank.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagedList
 import com.hewking.gank.app.GankApplication
 import com.hewking.gank.data.entity.GirlEntity
@@ -39,6 +40,12 @@ class GirlsViewModel : ViewModel(){
     fun deleteData(entity: GirlEntity) {
         GlobalScope.launch {
             girlsRepo.deleteFromCache(entity)
+        }
+    }
+
+    fun reflesh(){
+        viewModelScope.launch {
+            girlsRepo.refresh()
         }
     }
 

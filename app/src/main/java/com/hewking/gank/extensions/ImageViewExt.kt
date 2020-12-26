@@ -1,6 +1,5 @@
-package com.hewking.gank.util.ex
+package com.hewking.gank.extensions
 
-import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 

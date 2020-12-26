@@ -1,6 +1,6 @@
-package com.hewking.gank.infrastructure.network
+package com.hewking.gank.infra.network
 
-import com.hewking.gank.infrastructure.network.type.TypeBuilder
+import com.hewking.gank.infra.network.type.TypeBuilder
 import com.hewking.gank.util.GsonUtil
 import io.reactivex.Observable
 import io.reactivex.ObservableSource

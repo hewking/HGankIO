@@ -1,4 +1,4 @@
-package com.hewking.gank.infrastructure.network
+package com.hewking.gank.infra.network
 
 import com.hewking.gank.config.BASEURL
 import okhttp3.OkHttpClient

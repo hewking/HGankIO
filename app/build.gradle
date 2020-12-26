@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'dagger.hilt.android.plugin'
 
 kapt {
     generateStubs = true
@@ -31,8 +32,8 @@ android {
 //        incremental true
 //    }
 
-    viewBinding {
-        enabled true
+    buildFeatures{
+        viewBinding= true
     }
 
     compileOptions {
@@ -155,6 +156,10 @@ dependencies {
 
     // optional - RxJava support
     implementation "androidx.paging:paging-rxjava2-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-rxjava2-ktx
+
+    // DI
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 
