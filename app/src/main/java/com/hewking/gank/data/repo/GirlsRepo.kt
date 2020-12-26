@@ -1,7 +1,6 @@
 package com.hewking.gank.data.repo
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
@@ -9,12 +8,8 @@ import com.hewking.gank.api.Api
 import com.hewking.gank.data.database.AppDatabase
 import com.hewking.gank.data.database.dao.GirlDao
 import com.hewking.gank.data.entity.GirlEntity
-import com.hewking.gank.data.model.GirlsModel
 import com.hewking.gank.infra.network.GankRetrofit
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 /**

@@ -1,8 +1,10 @@
 package com.hewking.gank.ui.home
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.hewking.gank.base.BaseActivity
 import com.hewking.gank.databinding.ActivityMainBinding
+import com.hewking.gank.viewmodels.GirlsViewModel
 
 class MainActivity : BaseActivity() {
 
@@ -15,4 +17,5 @@ class MainActivity : BaseActivity() {
             setSupportActionBar(binding.toolbar)
         }
     }
+
 }
