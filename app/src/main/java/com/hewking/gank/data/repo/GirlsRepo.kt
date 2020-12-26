@@ -13,7 +13,9 @@ import com.hewking.gank.data.model.GirlsModel
 import com.hewking.gank.infra.network.GankRetrofit
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 
 /**
  * @program: HGankIO
@@ -40,7 +42,9 @@ class GirlsRepo(context: Context) {
 
     suspend fun refresh() {
         val girls = service.getGirls()
-        girlDao.insertAll(girls.data?:return)
+        withContext(Dispatchers.IO){
+            girlDao.insertAll(girls.data?:return@withContext)
+        }
 
     }
 

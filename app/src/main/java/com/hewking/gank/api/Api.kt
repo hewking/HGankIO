@@ -12,7 +12,8 @@ interface Api {
     @GET("/api/v2/data/category/Girl/type/Girl/page/1/count/10")
     fun girls() : Observable<ResponseBody>
 
-    fun getGirls(): CommonResult<List<GirlEntity>>
+    @GET("/api/v2/data/category/Girl/type/Girl/page/1/count/10")
+    suspend fun getGirls(): CommonResult<List<GirlEntity>>
 
 
 }

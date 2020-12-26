@@ -59,6 +59,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     override fun refreshData() {
         super.refreshData()
+        viewModel.reflesh()
         onLoadEnd()
     }
 
