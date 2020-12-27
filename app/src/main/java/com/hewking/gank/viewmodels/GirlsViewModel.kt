@@ -1,5 +1,6 @@
 package com.hewking.gank.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +11,7 @@ import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.data.repo.GirlsRepo
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
 /**
  * @program: HGankIO
@@ -20,13 +22,12 @@ import kotlinx.coroutines.*
  *
  * @create: 2019-02-23 14:42
  **/
-class GirlsViewModel : ViewModel(){
-
-    private val compositeDisposable by lazy {CompositeDisposable()}
+class GirlsViewModel @ViewModelInject constructor(
+) : ViewModel(){
 
     var girls : LiveData<PagedList<GirlEntity>>
 
-    private var girlsRepo: GirlsRepo = GirlsRepo(GankApplication.getApp())
+    lateinit var girlsRepo: GirlsRepo
 
     init{
         girls = girlsRepo.getGirls()
@@ -34,7 +35,6 @@ class GirlsViewModel : ViewModel(){
 
     override fun onCleared() {
         super.onCleared()
-        compositeDisposable.clear()
     }
 
     fun deleteData(entity: GirlEntity) {
@@ -49,12 +49,4 @@ class GirlsViewModel : ViewModel(){
         }
     }
 
-}
-
-
-object GirlsViewModelFactory : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return GirlsViewModel() as T
-    }
 }

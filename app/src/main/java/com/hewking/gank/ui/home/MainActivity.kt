@@ -5,7 +5,9 @@ import androidx.activity.viewModels
 import com.hewking.gank.base.BaseActivity
 import com.hewking.gank.databinding.ActivityMainBinding
 import com.hewking.gank.viewmodels.GirlsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}

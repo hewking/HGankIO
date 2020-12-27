@@ -2,7 +2,7 @@ package com.hewking.gank.app;
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
-//@HiltAndroidApp
+@HiltAndroidApp
 class GankApplication : Application(){
 
     companion object {

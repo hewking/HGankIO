@@ -21,12 +21,8 @@ object GankRetrofit {
     init {
 
         val client = OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-                    override fun log(message: String) {
-                        Timber.d(message)
-                    }
-
-                }).setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build()
 
         retrofit = Retrofit.Builder()

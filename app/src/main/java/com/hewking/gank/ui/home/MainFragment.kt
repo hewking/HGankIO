@@ -7,38 +7,20 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import com.hewking.gank.R
 import com.hewking.gank.base.BaseRecyclerFragment
 import com.hewking.gank.base.CommonBaseAdapter
 import com.hewking.gank.base.CommonViewHolder
 import com.hewking.gank.data.entity.GirlEntity
-import com.hewking.gank.ui.imageViewer.ImageViewerActivity as ImageViewer
 import com.hewking.gank.extensions.load
 import com.hewking.gank.viewmodels.GirlsViewModel
 import com.hewking.gank.widget.MultiImageLayout
+import dagger.hilt.android.AndroidEntryPoint
+import com.hewking.gank.ui.imageViewer.ImageViewerActivity as ImageViewer
 
+@AndroidEntryPoint
 class MainFragment : BaseRecyclerFragment<GirlEntity>() {
-
-    companion object {
-        private val diffItemCallback = object : DiffUtil.ItemCallback<GirlEntity>() {
-            override fun areItemsTheSame(
-                    oldItem: GirlEntity,
-                    newItem: GirlEntity
-            ): Boolean {
-                return newItem.id == oldItem.id
-            }
-
-            override fun areContentsTheSame(
-                    oldItem: GirlEntity,
-                    newItem: GirlEntity
-            ): Boolean {
-                return oldItem.title == newItem.title
-            }
-
-        }
-    }
 
     private val viewModel: GirlsViewModel by viewModels()
 
@@ -53,7 +35,6 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
             onLoadEnd()
         })
     }
-
 
     override fun loadData() {
     }
@@ -108,4 +89,24 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
         }
     }
+
+    companion object {
+        private val diffItemCallback = object : DiffUtil.ItemCallback<GirlEntity>() {
+            override fun areItemsTheSame(
+                oldItem: GirlEntity,
+                newItem: GirlEntity
+            ): Boolean {
+                return newItem.id == oldItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: GirlEntity,
+                newItem: GirlEntity
+            ): Boolean {
+                return oldItem.title == newItem.title
+            }
+
+        }
+    }
+
 }

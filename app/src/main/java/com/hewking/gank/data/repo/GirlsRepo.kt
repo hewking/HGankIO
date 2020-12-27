@@ -11,6 +11,7 @@ import com.hewking.gank.data.entity.GirlEntity
 import com.hewking.gank.infra.network.GankRetrofit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 /**
  * @program: HGankIO
@@ -18,7 +19,7 @@ import kotlinx.coroutines.withContext
  * @author: hewking
  * @create: 2019-02-23 17:31
  **/
-class GirlsRepo(context: Context) {
+class GirlsRepo constructor(context: Context) {
 
     private lateinit var girls: LiveData<PagedList<GirlEntity>>
 

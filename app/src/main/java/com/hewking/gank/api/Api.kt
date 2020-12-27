@@ -8,11 +8,7 @@ import retrofit2.http.GET
 
 interface Api {
 
-
-    @GET("/api/v2/data/category/Girl/type/Girl/page/1/count/10")
-    fun girls() : Observable<ResponseBody>
-
-    @GET("/api/v2/data/category/Girl/type/Girl/page/1/count/10")
+    @GET("/api/v2/data/category/Girl/type/Girl/page/1/count/50")
     suspend fun getGirls(): CommonResult<List<GirlEntity>>
 
 
