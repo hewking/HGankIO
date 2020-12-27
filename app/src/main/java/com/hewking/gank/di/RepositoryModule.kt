@@ -1,5 +1,6 @@
 package com.hewking.gank.di
 
+import android.app.Application
 import android.content.Context
 import com.hewking.gank.data.repo.GirlsRepo
 import dagger.Module
@@ -26,7 +27,7 @@ object RepositoryModule {
   @Singleton
   @Provides
   fun provideGirlsRepository(
-      @ApplicationContext context: Context
+      context: Application
   ): GirlsRepo {
     return GirlsRepo(context)
   }

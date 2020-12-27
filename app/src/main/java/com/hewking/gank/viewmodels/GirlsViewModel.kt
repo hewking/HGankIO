@@ -23,11 +23,10 @@ import javax.inject.Inject
  * @create: 2019-02-23 14:42
  **/
 class GirlsViewModel @ViewModelInject constructor(
+    var girlsRepo: GirlsRepo
 ) : ViewModel(){
 
     var girls : LiveData<PagedList<GirlEntity>>
-
-    lateinit var girlsRepo: GirlsRepo
 
     init{
         girls = girlsRepo.getGirls()
