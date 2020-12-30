@@ -15,22 +15,15 @@ import javax.inject.Inject
 
 /**
  * @program: HGankIO
- *
  * @description: ${description}
- *
  * @author: hewking
- *
  * @create: 2019-02-23 14:42
  **/
 class GirlsViewModel @ViewModelInject constructor(
     var girlsRepo: GirlsRepo
 ) : ViewModel(){
 
-    var girls : LiveData<PagedList<GirlEntity>>
-
-    init{
-        girls = girlsRepo.getGirls()
-    }
+    var girls : LiveData<PagedList<GirlEntity>> = girlsRepo.getGirls()
 
     override fun onCleared() {
         super.onCleared()

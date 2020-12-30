@@ -7,32 +7,32 @@ import com.hewking.gank.base.BaseActivity
 import com.hewking.gank.databinding.ActivityImageViewerBinding
 import com.hewking.gank.extensions.load
 
-class ImageViewerActivity : BaseActivity(){
+class ImageViewerActivity : BaseActivity() {
 
-    companion object {
+  companion object {
 
-        private const val IMAGE_URL = "image_url"
+    private const val IMAGE_URL = "image_url"
 
-        fun start(activity: Activity,url:String){
-            Intent(activity,ImageViewerActivity::class.java).also {
-                it.putExtra(IMAGE_URL,url)
-                activity.startActivity(it)
-            }
-        }
+    fun start(activity: Activity, url: String) {
+      Intent(activity, ImageViewerActivity::class.java).also {
+        it.putExtra(IMAGE_URL, url)
+        activity.startActivity(it)
+      }
     }
+  }
 
-    private lateinit var binding: ActivityImageViewerBinding
+  private lateinit var binding: ActivityImageViewerBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityImageViewerBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        this.initView()
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityImageViewerBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    this.initView()
+  }
 
-    private fun initView(){
-        val imageUrl = intent.getStringExtra(IMAGE_URL)
-        binding.ivViewer.load(imageUrl?:"")
-    }
+  private fun initView() {
+    val imageUrl = intent.getStringExtra(IMAGE_URL)
+    binding.ivViewer.load(imageUrl ?: "")
+  }
 
 }
