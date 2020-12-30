@@ -26,6 +26,7 @@ class MainFragment : BaseRecyclerFragment<GirlEntity>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.reflesh()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

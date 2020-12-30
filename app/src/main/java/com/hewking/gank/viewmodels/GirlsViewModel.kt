@@ -24,7 +24,8 @@ class GirlsViewModel @ViewModelInject constructor(
     var girlsRepo: GirlsRepo
 ) : ViewModel(){
 
-    var girls : LiveData<PagedList<GirlEntity>> = girlsRepo.getGirls().toLiveData(pageSize = 30)
+    private var _girls : LiveData<PagedList<GirlEntity>> = girlsRepo.getGirls().toLiveData(pageSize = 30)
+    val girls = _girls
 
     override fun onCleared() {
         super.onCleared()
