@@ -13,7 +13,7 @@ android {
     compileSdkVersion versions.compileSdkVersion
     buildToolsVersion versions.buildToolsVersion
     defaultConfig {
-        applicationId versions.applicationId
+        applicationId names.applicationId
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersion
         versionCode versions.versionCode
@@ -92,73 +92,73 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     // svg 支持库
-    implementation "androidx.vectordrawable:vectordrawable:$dependenciesVersions.vectordrawable_version"
+    implementation "androidx.vectordrawable:vectordrawable:$versions.vectordrawable_version"
     /* To be able to animate properties of a VectorDrawable, add the following.  Useful for
      * illustration purposes or state changes in response to user events
      */
-    implementation "androidx.vectordrawable:vectordrawable-animated:$dependenciesVersions.vectordrawable_version"
+    implementation "androidx.vectordrawable:vectordrawable-animated:$versions.vectordrawable_version"
 
     // Java language implementation
-    implementation "androidx.activity:activity:$dependenciesVersions.activity_version"
+    implementation "androidx.activity:activity:$versions.activity_version"
     // Kotlin ktx
-    implementation "androidx.activity:activity-ktx:$dependenciesVersions.activity_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$dependenciesVersions.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$dependenciesVersions.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$dependenciesVersions.lifecycleVersion"
-    implementation "androidx.core:core-ktx:$dependenciesVersions.core_ktx"
+    implementation "androidx.activity:activity-ktx:$versions.activity_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleVersion"
+    implementation "androidx.core:core-ktx:$versions.core_ktx"
     implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     //glide
-    implementation "com.github.bumptech.glide:glide:${dependenciesVersions.glide}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
-    kapt "com.github.bumptech.glide:compiler:${dependenciesVersions.glide}"
+    implementation "com.github.bumptech.glide:glide:${versions.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${versions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
 
     // okhttp
-    implementation "com.squareup.okhttp3:okhttp:${dependenciesVersions.okhttp}"
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
 
     // rxjava
-    implementation "io.reactivex.rxjava2:rxjava:${dependenciesVersions.rxjava}"
+    implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //retrofit
-    implementation "com.squareup.retrofit2:retrofit:${dependenciesVersions.retrofit}"
-    implementation "com.squareup.retrofit2:retrofit-converters:$dependenciesVersions.retrofit"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$dependenciesVersions.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$dependenciesVersions.retrofit"
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:retrofit-converters:$versions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 
     // timber
-    implementation "com.jakewharton.timber:timber:${dependenciesVersions.timber}"
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
 
     // dagger
-    implementation "com.google.dagger:dagger:${dependenciesVersions.dagger}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${dependenciesVersions.dagger}"
-    kapt "com.google.dagger:dagger-compiler:${dependenciesVersions.dagger}"
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // Room components
-    kapt "androidx.room:room-compiler:$dependenciesVersions.room"
-    annotationProcessor "androidx.room:room-compiler:$dependenciesVersions.room"
-    implementation "androidx.room:room-runtime:$dependenciesVersions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+    annotationProcessor "androidx.room:room-compiler:$versions.room"
+    implementation "androidx.room:room-runtime:$versions.room"
 
     // Navigation
-    implementation "androidx.navigation:navigation-fragment:$dependenciesVersions.nav_version"
-    implementation "androidx.navigation:navigation-ui:$dependenciesVersions.nav_version"
+    implementation "androidx.navigation:navigation-fragment:$versions.nav_version"
+    implementation "androidx.navigation:navigation-ui:$versions.nav_version"
     // Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:$dependenciesVersions.nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$dependenciesVersions.nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.nav_version"
     // Dynamic Feature Module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$dependenciesVersions.nav_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$versions.nav_version"
     // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:$dependenciesVersions.nav_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$versions.nav_version"
 
     // paging of jetpack
-    implementation "androidx.paging:paging-runtime-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-runtime-ktx
+    implementation "androidx.paging:paging-runtime-ktx:$versions.paging_version" // For Kotlin use paging-runtime-ktx
 
     // alternatively - without Android dependencies for testing
-    testImplementation "androidx.paging:paging-common-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-common-ktx
+    testImplementation "androidx.paging:paging-common-ktx:$versions.paging_version" // For Kotlin use paging-common-ktx
 
     // optional - RxJava support
-    implementation "androidx.paging:paging-rxjava2-ktx:$dependenciesVersions.paging_version" // For Kotlin use paging-rxjava2-ktx
+    implementation "androidx.paging:paging-rxjava2-ktx:$versions.paging_version" // For Kotlin use paging-rxjava2-ktx
 
     // DI
     implementation "com.google.dagger:hilt-android:2.28-alpha"
