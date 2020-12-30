@@ -19,4 +19,5 @@ google architechure 架构已经成为了事实上的标准，在这个过程中
 3. coroutine 大规模使用
 4. hilt 依赖注入
 5. lint 引入
+6. 依赖库，插件，gradle,android gradle plugin 等版本升级到最新
 

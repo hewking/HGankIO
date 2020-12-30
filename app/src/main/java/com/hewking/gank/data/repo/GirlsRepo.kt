@@ -2,6 +2,7 @@ package com.hewking.gank.data.repo
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
 import com.hewking.gank.api.Api
@@ -18,14 +19,11 @@ import kotlinx.coroutines.withContext
  **/
 class GirlsRepo constructor(
     context: Context,
-    val girlDao: GirlDao,
-    val service: Api) {
+    private val girlDao: GirlDao,
+    private val service: Api) {
 
-  private lateinit var girls: LiveData<PagedList<GirlEntity>>
-
-  fun getGirls(): LiveData<PagedList<GirlEntity>> {
-    girls = girlDao.getAllGirls().toLiveData(pageSize = 10)
-    return girls
+  fun getGirls(): DataSource.Factory<Int, GirlEntity> {
+    return girlDao.getAllGirls()
   }
 
   fun deleteFromCache(girl: GirlEntity) {

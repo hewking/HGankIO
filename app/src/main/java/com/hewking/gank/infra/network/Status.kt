@@ -12,23 +12,21 @@ object StatusCode {
 
 }
 
-sealed class Status(code: Int) {
+sealed class Result<out T: Any> {
 
-  object Success : Status(StatusCode.success)
+  data class Success<out T: Any>(val data: T): Result<T>()
+  data class Error(val e: Exception): Result<Nothing>()
+
+  override fun toString(): String {
+    return when(this) {
+      is Success -> "Success[data:$data]"
+      is Error -> "Error[exception:$e]"
+    }
+  }
 
 }
 
-open class Result {
-
-  class Success : Result()
-
-  class Error : Result()
-
-}
-
-class Resources
-
-data class CommonResult<T>(
+data class BaseResponse<T>(
     val status: Int,
     val data: T?
 )
